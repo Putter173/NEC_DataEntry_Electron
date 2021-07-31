@@ -3,7 +3,7 @@
 ## To do:
 * Link to Google Sheets
 * Add UI support for Infinite Local Arrays
-* Code Cleanup
+* Code Cleanup & Comments
 
 ## Current Repository File Structure
 
