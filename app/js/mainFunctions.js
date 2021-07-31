@@ -37,6 +37,9 @@ function cc() {
     document.execCommand('copy');
     document.body.removeChild(el);
 }
+
+// Unused Functions Below
+
 function csv() {
     var testCode = document.getElementById("testCode").value;
     var cathode = document.getElementById("cathode").value;
