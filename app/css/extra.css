@@ -1,0 +1,57 @@
+/* Tab Bar CSS */
+
+#barList {
+  width: fit-content;
+  padding: 0 0.4em 0 0;
+  position: relative;
+  height: 100%;
+  background-color: #e0e0e0;
+}
+
+li {
+  width: 1.4218888889em;
+  height: 1.4218888889em;
+  margin-bottom: .5vw;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  font-size: 2.25em;
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+    0 0 0 1px rgb(10 10 10 / 2%);
+}
+li:hover {
+  background-color: #f2f2f2;
+  color: #000;
+}
+li.active {
+  background: rgb(176, 38, 255);
+  background: linear-gradient(
+    310deg,
+    rgba(176, 38, 255, 1) 20%,
+    rgba(31, 81, 255, 1) 100%
+  );
+  color: #fff;
+}
+#add {
+  background-color: #6dce80;
+  color: #fff;
+  position: absolute;
+  margin: 0;
+  bottom: 1vw;
+}
+#add:hover {
+  background-color: #55bd68;
+}
+#max {
+  background-color: #ff6961;
+  color: #fff;
+  position: absolute;
+  margin: 0;
+  font-size: 1.75em;
+  width: 1.8281428571em;
+  height: 1.8281428571em;
+  bottom: 1vw;
+}
