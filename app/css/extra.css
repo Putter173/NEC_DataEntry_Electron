@@ -11,7 +11,7 @@
 li {
   width: 1.4218888889em;
   height: 1.4218888889em;
-  margin-bottom: .5vw;
+  margin-bottom: 0.5vw;
   border-radius: 6px;
   background-color: #fff;
   color: #000;
@@ -54,4 +54,30 @@ li.active {
   width: 1.8281428571em;
   height: 1.8281428571em;
   bottom: 1vw;
+}
+
+.button,
+.button:focus {
+  background-color: #363636;
+  color: #fff;
+}
+
+#removeBtn:hover {
+  background-color: #ff6961;
+  color: #fff;
+}
+
+#removeBtn:active {
+  background-color: #c63637;
+  color: #fff;
+}
+
+#uploadBtn:hover {
+  background-color: #55bd68;
+  color: #fff;
+}
+
+#uploadBtn:active {
+  background-color: #198c3c;
+  color: #fff;
 }

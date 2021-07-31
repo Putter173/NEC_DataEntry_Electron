@@ -1,13 +1,5 @@
 const { ipcRenderer } = require("electron");
 
-function getStorredArrayVal() {
-  let val = ipcRenderer.sendSync("storredArray", true);
-  console.log(val);
-}
-function getArrayData(arg) {
-  let val = ipcRenderer.sendSync("storredArray", false);
-  console.log(val[arg]);
-}
 function addNewArray() {
   let emptyArray = {
     testCode: "",
@@ -15,7 +7,7 @@ function addNewArray() {
     anode: "",
     anodeSol: "",
     anodeThick: "",
-    anodeFoil: "",
+    anodeFoil: "Cu",
     necLayer: "",
     necWatt: "",
     necMinute: "",
@@ -39,8 +31,7 @@ function addNewArray() {
     c50: "",
     c100: "",
   };
-  let val = ipcRenderer.sendSync("modArray", emptyArray);
-  console.log(val);
+  ipcRenderer.sendSync("modArray", emptyArray);
 }
 function clearExistArray(arg) {
   let emptyArray = {
@@ -49,7 +40,7 @@ function clearExistArray(arg) {
     anode: "",
     anodeSol: "",
     anodeThick: "",
-    anodeFoil: "",
+    anodeFoil: "Cu",
     necLayer: "",
     necWatt: "",
     necMinute: "",
@@ -73,12 +64,7 @@ function clearExistArray(arg) {
     c50: "",
     c100: "",
   };
-  let val = ipcRenderer.sendSync("modArray", emptyArray, arg);
-  console.log(val);
-}
-function removeArray(arg) {
-  let val = ipcRenderer.sendSync("removeArray", arg);
-  console.log(val);
+  ipcRenderer.sendSync("modArray", emptyArray, arg);
 }
 
 /* Main Functions */
@@ -245,5 +231,22 @@ function addLi() {
   let linkEl = document.createElement("a");
   linkEl.appendChild(listEl);
   element.appendChild(linkEl);
+  addNewArray()
   loadStoredValues(totalBarVal)
+}
+
+function removeArray() {
+  let currentArray = document.getElementsByClassName("active")[0]; // Identify previous Element
+  let currentArrayId = currentArray.innerHTML;
+  let newActiveBarId = Number(currentArrayId) - 1
+  console.log(newActiveBarId)
+
+  if (newActiveBarId === 0 ) {
+    clearExistArray(0)
+    loadStoredValues(0)
+  } else {
+    refreshActive("bar" + newActiveBarId.toString())
+    currentArray.remove()
+    ipcRenderer.sendSync("removeArray", currentArrayId - 1);
+  }
 }

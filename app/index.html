@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Cell Data Manager</title>
-    <script src="js/barFunctions.js"></script>
+    <script src="js/dbFunctions.js"></script>
     <script src="js/mainFunctions.js"></script>
     <link rel="stylesheet" href="css/bulma.min.css">
     <link rel="stylesheet" href="css/extra.css">
@@ -267,8 +267,9 @@
                       </td>
                   </tr>
               </table>
-              <div style="display: grid;place-content: center;">
-                  <button class="button" style="font-family: 'Courier New', Courier, monospace;font-weight: bold;" onclick="csv()">Download CSV</button>    
+              <div style="display: inline;float: right;">
+                  <button id="removeBtn" class="button" style="font-family: 'Courier New', Courier, monospace;font-weight: bold;" onclick="removeArray()">Remove</button>    
+                  <button id="uploadBtn" class="button" style="font-family: 'Courier New', Courier, monospace;font-weight: bold;" onclick="">Upload</button>    
               </div>
           </div>
       </div>
