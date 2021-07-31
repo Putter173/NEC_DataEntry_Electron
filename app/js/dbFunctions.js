@@ -204,7 +204,7 @@ function addLi() {
 
   // Check, Update, and Lmit Total Bar Value
   totalBarVal = totalBarVal + 1;
-  if (totalBarVal === 9) {
+  if (totalBarVal === 15) {
     let attr = document.createAttribute("style");
     attr.value = "display: none;";
     document.getElementById("add").setAttributeNode(attr);
