@@ -14,7 +14,7 @@
     ├── .gitignore
     ├── README.md                     # This README.md file
     ├── package.json                  # Contains Repository Metadata
-    ├── main.js                       # Electron's Main Process Lies here - Along with all of it's functions
+    ├── main.js                       # Contains Electron's Main Process - Along with all of it's functions
     └── app
         ├── .DS_Store
         ├── index.html                # Main/Only HTML File (Basically the front-end)
@@ -26,3 +26,9 @@
         └── js
             ├── mainFunctions.js      # Contains UI Javascript Functions
             └── dbFunctions.js        # Contains Javascript Functions that deal with Local (User Generated) Arrays
+
+## Get Started
+    git clone https://github.com/Putter173/NEC_DataEntry_Electron.git
+    cd NEC_DataEntry_Electron
+    npm i
+    npm start
