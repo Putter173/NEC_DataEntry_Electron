@@ -5,6 +5,8 @@
 * Add UI support for Infinite Local Arrays
 * Fix UI scrolling Issue
 * Code Cleanup & Comments
+* Add App Name
+* Add App Icon
 
 ## Current Repository File Structure
 
