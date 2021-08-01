@@ -82,6 +82,10 @@ li.active {
   color: #fff;
 }
 
+#uploadBtn.is-loading {
+  background-color: #55bd68
+}
+
 .content h1 {
   font-size: 22px ;
 }

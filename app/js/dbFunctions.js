@@ -71,7 +71,7 @@ function clearExistArray(arg) {
 
 function loadStoredValues(Id) {
   let val = ipcRenderer.sendSync("storredArray", true);
-  Id = Id + 1
+  Id = Id + 1;
 
   if (Id <= val) {
     let data = ipcRenderer.sendSync("storredArray", false);
@@ -81,36 +81,36 @@ function loadStoredValues(Id) {
       document.getElementById(id).value = value;
     }
   } else if (Id > val) {
-    document.getElementById("testCode").value = "",
-      document.getElementById("cathode").value = "",
-      document.getElementById("anode").value = "",
-      document.getElementById("anodeSol").value = "",
-      document.getElementById("anodeThick").value = "",
-      document.getElementById("anodeFoil").value = "Cu",
-      document.getElementById("necLayer").value = "",
-      document.getElementById("necWatt").value = "",
-      document.getElementById("necMinute").value = "",
-      document.getElementById("protectLayer").value = "",
-      document.getElementById("protectWatt").value = "",
-      document.getElementById("protectTime").value = "",
-      document.getElementById("mass").value = "",
-      document.getElementById("c1").value = "",
-      document.getElementById("c2").value = "",
-      document.getElementById("c3").value = "",
-      document.getElementById("c4").value = "",
-      document.getElementById("c5").value = "",
-      document.getElementById("c6").value = "",
-      document.getElementById("c7").value = "",
-      document.getElementById("c8").value = "",
-      document.getElementById("c9").value = "",
-      document.getElementById("c10").value = "",
-      document.getElementById("c15").value = "",
-      document.getElementById("c20").value = "",
-      document.getElementById("c30").value = "",
-      document.getElementById("c50").value = "",
-      document.getElementById("c100").value = "";
+    (document.getElementById("testCode").value = ""),
+      (document.getElementById("cathode").value = ""),
+      (document.getElementById("anode").value = ""),
+      (document.getElementById("anodeSol").value = ""),
+      (document.getElementById("anodeThick").value = ""),
+      (document.getElementById("anodeFoil").value = "Cu"),
+      (document.getElementById("necLayer").value = ""),
+      (document.getElementById("necWatt").value = ""),
+      (document.getElementById("necMinute").value = ""),
+      (document.getElementById("protectLayer").value = ""),
+      (document.getElementById("protectWatt").value = ""),
+      (document.getElementById("protectTime").value = ""),
+      (document.getElementById("mass").value = ""),
+      (document.getElementById("c1").value = ""),
+      (document.getElementById("c2").value = ""),
+      (document.getElementById("c3").value = ""),
+      (document.getElementById("c4").value = ""),
+      (document.getElementById("c5").value = ""),
+      (document.getElementById("c6").value = ""),
+      (document.getElementById("c7").value = ""),
+      (document.getElementById("c8").value = ""),
+      (document.getElementById("c9").value = ""),
+      (document.getElementById("c10").value = ""),
+      (document.getElementById("c15").value = ""),
+      (document.getElementById("c20").value = ""),
+      (document.getElementById("c30").value = ""),
+      (document.getElementById("c50").value = ""),
+      (document.getElementById("c100").value = "");
   } else {
-    throw "Error in loadStoredValues Function"
+    throw "Error in loadStoredValues Function";
   }
 
   electrodeMass();
@@ -218,7 +218,7 @@ function addLi() {
 
   // Add Attributes to New Element
   let element = document.getElementById("barList");
-  let classAttr = document.createAttribute("class");       // Create & Add "class" attribute
+  let classAttr = document.createAttribute("class"); // Create & Add "class" attribute
   classAttr.value = "active";
   listEl.setAttributeNode(classAttr);
   let idAttr = document.createAttribute("id"); // Create & Add "id" attribute
@@ -231,31 +231,33 @@ function addLi() {
   let linkEl = document.createElement("a");
   linkEl.appendChild(listEl);
   element.appendChild(linkEl);
-  addNewArray()
-  loadStoredValues(totalBarVal)
+  addNewArray();
+  loadStoredValues(totalBarVal);
 }
 
 function removeArray() {
   let currentArray = document.getElementsByClassName("active")[0]; // Identify previous Element
   let totalBarVal = ipcRenderer.sendSync("storredArray", true);
   let currentArrayId = currentArray.innerHTML;
-  let newActiveBarId = Number(currentArrayId) - 1
+  let newActiveBarId = Number(currentArrayId) - 1;
 
-  if (newActiveBarId === 0 ) {
+  if (newActiveBarId === 0) {
     if (totalBarVal === 1) {
-      clearExistArray(0)
-      loadStoredValues(0)
+      clearExistArray(0);
+      loadStoredValues(0);
     } else {
-      ipcRenderer.sendSync("removeArray", 0)
-      document.getElementById("bar" + totalBarVal.toString()).remove()
-      bootWithRecent()
+      ipcRenderer.sendSync("removeArray", 0);
+      document.getElementById("bar" + totalBarVal.toString()).remove();
+      bootWithRecent();
     }
   } else {
-    refreshActive("bar" + newActiveBarId.toString())
-    currentArray.remove()
+    refreshActive("bar" + newActiveBarId.toString());
+    currentArray.remove();
     ipcRenderer.sendSync("removeArray", currentArrayId - 1);
   }
 }
+
+
 
 function uploadArray() {
   const testCode = document.getElementById("testCode").value;
@@ -286,11 +288,57 @@ function uploadArray() {
   const c30 = document.getElementById("c30").value;
   const c50 = document.getElementById("c50").value;
   const c100 = document.getElementById("c100").value;
-  const value = [testCode, cathode, anode, anodeSol, anodeThick, anodeFoil, necLayer,necWatt, necMinute, protectLayer, protectWatt, protectTime, mass, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c15, c20, c30, c50, c100]
-  const result = ipcRenderer.sendSync("uploadArray", value)
+  const value = [
+    testCode,
+    cathode,
+    anode,
+    anodeSol,
+    anodeThick,
+    anodeFoil,
+    necLayer,
+    necWatt,
+    necMinute,
+    protectLayer,
+    protectWatt,
+    protectTime,
+    mass,
+    c1,
+    c2,
+    c3,
+    c4,
+    c5,
+    c6,
+    c7,
+    c8,
+    c9,
+    c10,
+    c15,
+    c20,
+    c30,
+    c50,
+    c100,
+  ];
+  const result = ipcRenderer.sendSync("uploadArray", value);
   if (result === "Array Uploaded Successfully") {
-    removeArray()
+    document.getElementById("uploadBtn").setAttribute("class", "button");
+    document
+      .getElementById("uploadBtn")
+      .setAttribute(
+        "style",
+        "font-family: 'Courier New', Courier, monospace;font-weight: bold;background-color: #55bd68"
+      );
+    document.getElementById("uploadBtn").innerHTML = "Success!";
+    setTimeout(function () {
+      document
+        .getElementById("uploadBtn")
+        .setAttribute(
+          "style",
+          "font-family: 'Courier New', Courier, monospace;font-weight: bold;"
+        );
+      document.getElementById("uploadBtn").innerHTML = "Start";
+    }, 1000);
+    removeArray();
   } else {
-    console.log("Error while uploading Array")
+    console.log("Error while uploading Array");
   }
 }

@@ -37,3 +37,10 @@ function cc() {
     document.execCommand('copy');
     document.body.removeChild(el);
 }
+
+function uploadBtn() {
+    document.getElementById('uploadBtn').setAttribute('class', 'button is-loading')
+    setTimeout(function(){
+        uploadArray()
+    },1);
+}
