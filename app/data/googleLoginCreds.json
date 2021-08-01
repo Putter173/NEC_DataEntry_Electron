@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "electron-dataentry",
+  "private_key_id": "6dc5c0ccc226c64f6d554cf2ec03566ba999af2d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCk829wE5W4Jp+u\nGFwRBCjfdnxPW3/ixFaK2W6LJj9/bQWyJgnYBu8LLLKxbNgjTtdY78AG8LPJHUr5\nT1YlknakJEYYCYcMalt0Z7Gd03nj+BVzXh0PKeTHRetFuhtyKNS0bdaVRoh+S4ln\nK4o8CQwAoGbMHDqrg+me+V/AMnhVjKi4WzVFYtbOpNHhK9U5LYoql/ZWXlTB/pE8\nt4U9TzkMi6vl8YssjRbkJF3oJo3uZAt3N7uXjCcSC5cJPVe4jAmJoJT4GdT99y50\nPE1stQd1clao1noiEHwcM/4ueDkBDc3tI6Ko3pHEM60Qt7pAUuhdoxJeIRuoPABw\nlhj92AJDAgMBAAECggEARfvozG7qx2JPvmAkc63Fn6XYMR07oZ02sJt2zL/yEeDS\nGVcNNyQd+KpCuIdbHoPdVyUFXoxyYwI0JJm2DaPaBWNEf/9O1oQrgDRchf9LCF9h\nznxgLOZT4/40x3UiHunW8SRm9heiYp8u0WCGOlmGR5/GbZQOimWh0aqxJszjBDxG\nlMqitBwswg4EsVUb6fNXvxH9u7hzBMkpQ8yNobwB2VI2VmbZJ5KC4apPI84VF8cu\nwL9rIgbLmrrNCVV5vYCLULGeCoiXL5tBo7kPCTceSAt2bDfx3Zmfuq0nR8OophrB\nGyXb4So18DC0toVs3XgnNiKVU32/539oWujJhynUuQKBgQDRM2LNi/lwn1HImP49\n02fQz26CWmGbXRkrkz3DbZikDiZKFtr4Q9c3pK5rfCzydA9hNpo6I5Bx6gbo+cnE\nH96cREUl10MxZSIsD97vI9X1tXF5lgWgGpos3YnT3PahIY7nBzSngJ/SVuC/Lidd\nTzePjpKVdkwCEcztu2b/pPUt6wKBgQDJ2e3Fdzv5VdDETSDqe972dAu2VykbqAC8\nfLpCuPY/EEQQ1X+/UstdpFjjMCR8AXKFv39SfoVmHsaIEAbbc39q3/2kY2cINQyW\nrodC8nWcJTKiycGi+zCHMRqp6pV2XMc+Fmvodmoqh+JfTApdElo6TwI9oGHb+AE6\nW8syTFHvCQKBgQCdpFQ6wdS4qkWtnKRRIIIllnoW3laZBaGW9YBgSLDyRvtRb0GY\nPT7rXjxVIKCaHx0Ly2KSlwQc4xZL7xa8pKtSJBvbNQgcK7KBc4AxwlZTrmORFJyu\nlf1B+7sFnId4ylnt+78QzdshXHhFeFkPdkdO9Ue+OwNxt8ouBr7Ju5tJ+wKBgQDF\nye/9YJq59Wb+E32/huWxpYCcicfUO8mM6MMzAj75CJ1JyYrGFQEFnzciV1hI0ro/\naKgAU82vhVSQmvO9Me2W8il+XZDmL+VH+Xi9Fww7lw+JCB3f8DdbIbi46w7NzpfF\ntP7D6NSbHE+rhb1Z+dPD8wuFC5UYkGnTn4L6pGJc0QKBgFq4RRSc1IyY8K7AlvAE\nKYYFy1baKW9UgS4h6j3zBX25wZQp2PyJJzs6M9ZraAVa2I2iTrzLXYsRADMUHrTx\nBuG68ZqoM4QOpxHjQuP8HEJ91drs7Xq4XNAVxE48IVb7htwCVV6n+NjGetwlahym\nKR1w6VSmwG++xB/kTrRHBtJ4\n-----END PRIVATE KEY-----\n",
+  "client_email": "sheets@electron-dataentry.iam.gserviceaccount.com",
+  "client_id": "110566221988172038408",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sheets%40electron-dataentry.iam.gserviceaccount.com"
+}

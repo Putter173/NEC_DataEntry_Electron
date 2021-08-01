@@ -237,16 +237,60 @@ function addLi() {
 
 function removeArray() {
   let currentArray = document.getElementsByClassName("active")[0]; // Identify previous Element
+  let totalBarVal = ipcRenderer.sendSync("storredArray", true);
   let currentArrayId = currentArray.innerHTML;
   let newActiveBarId = Number(currentArrayId) - 1
-  console.log(newActiveBarId)
 
   if (newActiveBarId === 0 ) {
-    clearExistArray(0)
-    loadStoredValues(0)
+    if (totalBarVal === 1) {
+      clearExistArray(0)
+      loadStoredValues(0)
+    } else {
+      ipcRenderer.sendSync("removeArray", 0)
+      document.getElementById("bar" + totalBarVal.toString()).remove()
+      bootWithRecent()
+    }
   } else {
     refreshActive("bar" + newActiveBarId.toString())
     currentArray.remove()
     ipcRenderer.sendSync("removeArray", currentArrayId - 1);
+  }
+}
+
+function uploadArray() {
+  const testCode = document.getElementById("testCode").value;
+  const cathode = document.getElementById("cathode").value;
+  const anode = document.getElementById("anode").value;
+  const anodeSol = document.getElementById("anodeSol").value;
+  const anodeThick = document.getElementById("anodeThick").value;
+  const anodeFoil = document.getElementById("anodeFoil").value;
+  const necLayer = document.getElementById("necLayer").value;
+  const necWatt = document.getElementById("necWatt").value;
+  const necMinute = document.getElementById("necMinute").value;
+  const protectLayer = document.getElementById("protectLayer").value;
+  const protectWatt = document.getElementById("protectWatt").value;
+  const protectTime = document.getElementById("protectTime").value;
+  const mass = document.getElementById("mass").value;
+  const c1 = document.getElementById("c1").value;
+  const c2 = document.getElementById("c2").value;
+  const c3 = document.getElementById("c3").value;
+  const c4 = document.getElementById("c4").value;
+  const c5 = document.getElementById("c5").value;
+  const c6 = document.getElementById("c6").value;
+  const c7 = document.getElementById("c7").value;
+  const c8 = document.getElementById("c8").value;
+  const c9 = document.getElementById("c9").value;
+  const c10 = document.getElementById("c10").value;
+  const c15 = document.getElementById("c15").value;
+  const c20 = document.getElementById("c20").value;
+  const c30 = document.getElementById("c30").value;
+  const c50 = document.getElementById("c50").value;
+  const c100 = document.getElementById("c100").value;
+  const value = [testCode, cathode, anode, anodeSol, anodeThick, anodeFoil, necLayer,necWatt, necMinute, protectLayer, protectWatt, protectTime, mass, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c15, c20, c30, c50, c100]
+  const result = ipcRenderer.sendSync("uploadArray", value)
+  if (result === "Array Uploaded Successfully") {
+    removeArray()
+  } else {
+    console.log("Error while uploading Array")
   }
 }

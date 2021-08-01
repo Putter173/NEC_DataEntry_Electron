@@ -1,4 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
+const { GoogleSpreadsheet } = require('google-spreadsheet');
 const path = require("path");
 const fs = require("fs");
 
@@ -74,4 +75,18 @@ ipcMain.on("removeArray", (event, Id) => {
     );
     event.returnValue = "removed Array ID:" + Id;
   });
+});
+
+ipcMain.on("uploadArray", (event, data) => {
+  const doc = new GoogleSpreadsheet('1aDmAtZ5HRVz3LEqLyKWQHfIf9oVbjalmMcn4fLeqht0');
+  const credentials = require('./app/data/googleLoginCreds.json')
+  async function writeToSpreadsheet() {
+    await doc.useServiceAccountAuth(credentials);
+        await doc.loadInfo();
+        const sheet = doc.sheetsByIndex[0];
+        const rows = await sheet.getRows();
+        const newRow = await sheet.addRow(data);
+        event.returnValue = "Array Uploaded Successfully";
+    }
+  writeToSpreadsheet()
 });

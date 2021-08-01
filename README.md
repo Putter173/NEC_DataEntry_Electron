@@ -1,8 +1,7 @@
 # NEC_DataEntry_Electron
 
 ## To do:
-* Link to Google Sheets
-* Add UI support for Infinite Local Arrays
+* Add UI support for Infinite Local Arrays & polish UI in general (Including upload process notifications)
 * Code Cleanup & Comments
 
 ## Current Repository File Structure
@@ -37,3 +36,5 @@
 Email: nec.lab.sut@gmail.com <br />
 Password: necLab2021
 
+## Link to Spreadsheet Linked with this app
+https://docs.google.com/spreadsheets/d/1aDmAtZ5HRVz3LEqLyKWQHfIf9oVbjalmMcn4fLeqht0
