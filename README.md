@@ -26,9 +26,14 @@
         └── js
             ├── mainFunctions.js      # Contains UI Javascript Functions
             └── dbFunctions.js        # Contains Javascript Functions that deal with Local (User Generated) Arrays
-
+            
 ## Get Started
     git clone https://github.com/Putter173/NEC_DataEntry_Electron.git
     cd NEC_DataEntry_Electron
     npm i
     npm start
+   
+## Google Account used for API
+Email: nec.lab.sut@gmail.com <br />
+Password: necLab2021
+
