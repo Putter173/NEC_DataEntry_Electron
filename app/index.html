@@ -13,7 +13,7 @@
       }
       window.addEventListener("scroll",noscroll);
       
-
+      // Permanemt script function
       const input = document.querySelector('input');
       function autoSave() {
         let activeEl = document.getElementsByClassName("active")[0]; // Identify previous Element
@@ -24,17 +24,6 @@
     </script>
   </head>
   <body class="columns" style="background-color: #e0e0e0;padding: .5vw;font-family: 'Courier New', Courier, monospace;margin: 0;overflow: hidden" onload="bootWithRecent()">
-    <!--p>
-      <button onclick="getStorredArrayVal()">getStorredArrayVal Function</button>
-      <button onclick="getArrayData(0)">getArrayData (1) Function</button>
-      <button onclick="getArrayData(1)">getArrayData (2) Function</button>
-      <button onclick="addNewArray()">addNewArray Function</button>
-      <button onclick="clearExistArray(1)">clearExistArray (1) Function</button>
-      <button onclick="clearExistArray(2)">clearExistArray (2) Function</button>
-      <button onclick="removeArray(0)">removeArray (1) Function</button>
-      <button onclick="removeArray(1)">removeArray (2) Function</button>
-      <button onclick="removeArray(2)">removeArray (3) Function</button>
-    </p-->
     <div class="columm">
       <ul id="barList">
         <a><li id="max" style="display: none;">max</li></a>
@@ -269,7 +258,7 @@
               </table>
               <div style="display: inline;float: right;">
                   <button id="removeBtn" class="button" style="font-family: 'Courier New', Courier, monospace;font-weight: bold;" onclick="removeArray()">Remove</button>    
-                  <button id="uploadBtn" class="button" style="font-family: 'Courier New', Courier, monospace;font-weight: bold;" onclick="uploadArray()">Upload</button>    
+                  <button id="uploadBtn" class="button" style="font-family: 'Courier New', Courier, monospace;font-weight: bold;" onclick="uploadArray()">Upload</button>
               </div>
           </div>
       </div>
