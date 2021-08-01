@@ -81,3 +81,16 @@ li.active {
   background-color: #198c3c;
   color: #fff;
 }
+
+.content h1 {
+  font-size: 22px ;
+}
+.content h2 {
+  font-size: 18px;
+}
+
+p,
+div,
+.input {
+  font-size: 14px;
+}

@@ -1,7 +1,7 @@
 # NEC_DataEntry_Electron
 
 ## To do:
-* Add UI support for Infinite Local Arrays & polish UI in general (Including upload process notifications)
+* Add UI support for Infinite Local Arrays & Fix UI scrolling Issue
 * Code Cleanup & Comments
 
 ## Current Repository File Structure

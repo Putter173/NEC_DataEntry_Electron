@@ -6,13 +6,7 @@
     <script src="js/mainFunctions.js"></script>
     <link rel="stylesheet" href="css/bulma.min.css">
     <link rel="stylesheet" href="css/extra.css">
-    <script>
-      // Temporary script function
-      function noscroll(){
-        window.scrollTo(0,0)
-      }
-      window.addEventListener("scroll",noscroll);
-      
+    <script>      
       // Permanemt script function
       const input = document.querySelector('input');
       function autoSave() {
@@ -92,7 +86,7 @@
                                       </select>
                                   </div>
                               </td>
-                              <td>
+                              <td style="vertical-align: middle;">
                                   <input class="input" style="width: 100%;text-align: center;" value="0.0175" id="anodeFoilMass" onChange="calculate()">
                               </td>
                           </tr>
@@ -111,7 +105,7 @@
                                       </select>
                                   </div>
                               </td>
-                              <td>
+                              <td style="vertical-align: middle;">
                                   <input class="input" style="width: 100%;text-align: center;" value="0.0106" id="cathodeFoilMass" onChange="calculate()">
                               </td>
                           </tr>
@@ -136,122 +130,122 @@
               <h1>Cycles</h1> 
               <table>
                   <tr>
-                      <th>
+                      <th style="border: none;">
                           Cycle
                       </th>
-                      <th>
+                      <th style="border: none;">
                           Energy discharge (mWh)
                       </th>
-                      <th>
+                      <th style="border: none;">
                           Cycle
                       </th>
-                      <th>
+                      <th style="border: none;">
                           Energy discharge (mWh)
                       </th>
-                      <th>
+                      <th style="border: none;">
                           Cycle
                       </th>
-                      <th>
+                      <th style="border: none;">
                           Energy discharge (mWh)
                       </th>
                   </tr>
                   <tr>
-                      <td style="text-align: center;vertical-align: middle;">
+                      <td style="text-align: center;vertical-align: middle;border: none;">
                           1
                       </td>
-                      <td>
+                      <td style="border: none;">
                           <input class="input" type="number" id="c1">
                       </td>
-                      <td style="text-align: center;vertical-align: middle;">
+                      <td style="text-align: center;vertical-align: middle;border: none;">
                           6
-                      </td>
-                      <td>
+                      </td style="border: none;">
+                      <td style="border: none;">
                           <input class="input" type="number" id="c6">
                       </td>
-                      <td style="text-align: center;vertical-align: middle;">
+                      <td style="text-align: center;vertical-align: middle;border: none;">
                           15
-                      </td>
-                      <td>
+                      </td style="border: none;">
+                      <td style="border: none;">
                           <input class="input" type="number" id="c15">
                       </td>
                   </tr>
                   <tr>
-                      <td style="text-align: center;vertical-align: middle;">
+                      <td style="text-align: center;vertical-align: middle;border: none;">
                           2
                       </td>
-                      <td>
+                      <td style="border: none;">
                           <input class="input" type="number" id="c2">
                       </td>
-                      <td style="text-align: center;vertical-align: middle;">
+                      <td style="text-align: center;vertical-align: middle;border: none;">
                           7
                       </td>
-                      <td>
+                      <td style="border: none;">
                           <input class="input" type="number" id="c7">
                       </td>
-                      <td style="text-align: center;vertical-align: middle;">
+                      <td style="text-align: center;vertical-align: middle;border: none;">
                           20
                       </td>
-                      <td>
+                      <td style="border: none;">
                           <input class="input" type="number" id="c20">
                       </td>
                   </tr>
                   <tr>
-                      <td style="text-align: center;vertical-align: middle;">
+                      <td style="text-align: center;vertical-align: middle;border: none;">
                           3
                       </td>
-                      <td>
+                      <td style="border: none;">
                           <input class="input" type="number" id="c3">
                       </td>
-                      <td style="text-align: center;vertical-align: middle;">
+                      <td style="text-align: center;vertical-align: middle;border: none;">
                           8
                       </td>
-                      <td>
+                      <td style="border: none;">
                           <input class="input" type="number" id="c8">
                       </td>
-                      <td style="text-align: center;vertical-align: middle;">
+                      <td style="text-align: center;vertical-align: middle;border: none;">
                           30
                       </td>
-                      <td>
+                      <td style="border: none;">
                           <input class="input" type="number" id="c30">
                       </td>
                   </tr>
                   <tr>
-                      <td style="text-align: center;vertical-align: middle;">
+                      <td style="text-align: center;vertical-align: middle;border: none;">
                           4
                       </td>
-                      <td>
+                      <td style="border: none;">
                           <input class="input" type="number" id="c4">
                       </td>
-                      <td style="text-align: center;vertical-align: middle;">
+                      <td style="text-align: center;vertical-align: middle;border: none;">
                           9
                       </td>
-                      <td>
+                      <td style="border: none;">
                           <input class="input" type="number" id="c9">
                       </td>
-                      <td style="text-align: center;vertical-align: middle;">
+                      <td style="text-align: center;vertical-align: middle;border: none;">
                           50
                       </td>
-                      <td>
+                      <td style="border: none;">
                           <input class="input" type="number" id="c50">
                       </td>
                   </tr>
                   <tr>
-                      <td style="text-align: center;vertical-align: middle;">
+                      <td style="text-align: center;vertical-align: middle;border: none;">
                           5
                       </td>
-                      <td>
+                      <td style="border: none;">
                           <input class="input" type="number" id="c5">
                       </td>
-                      <td style="text-align: center;vertical-align: middle;">
+                      <td style="text-align: center;vertical-align: middle;border: none;">
                           10
                       </td>
-                      <td>
+                      <td style="border: none;">
                           <input class="input" type="number" id="c10">
                       </td>
-                      <td style="text-align: center;vertical-align: middle;">
+                      <td style="text-align: center;vertical-align: middle;border: none;">
                           100
                       </td>
-                      <td>
+                      <td style="border: none;">
                           <input class="input" type="number" id="c100">
                       </td>
                   </tr>
