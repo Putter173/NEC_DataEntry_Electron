@@ -5,14 +5,15 @@ const fs = require("fs");
 
 function createWindow() {
   const win = new BrowserWindow({
-    height: 833,
-    width: 1130,
-    minHeight: 833,
-    minWidth: 1130,
+    height: 867,
+    width: 1500,
+    minHeight: 200,
+    minWidth: 100,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     },
+    icon: __dirname + '/app/assets/Icon.ico',
   });
 
   win.loadFile("app/index.html");

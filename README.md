@@ -1,7 +1,6 @@
 # NEC_DataEntry_Electron
 
 ## To do:
-* Add App Icon
 * Code Cleanup & Comments
 
 ## Current Repository File Structure

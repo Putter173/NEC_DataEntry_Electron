@@ -42,5 +42,5 @@ function uploadBtn() {
     document.getElementById('uploadBtn').setAttribute('class', 'button is-loading')
     setTimeout(function(){
         uploadArray()
-    },10);
+    },100);
 }
