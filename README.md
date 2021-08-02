@@ -1,7 +1,6 @@
 # NEC_DataEntry_Electron
 
 ## To do:
-* Add App Name
 * Add App Icon
 * Code Cleanup & Comments
 

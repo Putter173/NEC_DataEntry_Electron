@@ -37,7 +37,7 @@ app.on("window-all-closed", () => {
 // IPC Operations
 
 ipcMain.on("storredArray", (event, arg) => {
-  fs.readFile("app/data/temporaryData.json", (error, data) => {
+  fs.readFile(__dirname + '/app/data/temporaryData.json', (error, data) => {
     if (arg === true) {
       let responseObj = JSON.parse(data).length;
       event.returnValue = responseObj;
@@ -51,14 +51,14 @@ ipcMain.on("storredArray", (event, arg) => {
 });
 
 ipcMain.on("modArray", (event, Obj, Id) => {
-  fs.readFile("app/data/temporaryData.json", (error, data) => {
+  fs.readFile(__dirname + '/app/data/temporaryData.json', (error, data) => {
     let presentFile = JSON.parse(data);
     if (Id === undefined) {
       Id = presentFile.length;
     }
     presentFile[Id] = Obj;
     fs.writeFileSync(
-      path.resolve(__dirname, "app/data/temporaryData.json"),
+      path.resolve(__dirname, "./app/data/temporaryData.json"),
       JSON.stringify(presentFile)
     );
     event.returnValue = "modArray Function Completed";
@@ -66,11 +66,11 @@ ipcMain.on("modArray", (event, Obj, Id) => {
 });
 
 ipcMain.on("removeArray", (event, Id) => {
-  fs.readFile("app/data/temporaryData.json", (error, data) => {
+  fs.readFile(__dirname + '/app/data/temporaryData.json', (error, data) => {
     let presentFile = JSON.parse(data);
     presentFile.splice(Id, 1);
     fs.writeFileSync(
-      path.resolve(__dirname, "app/data/temporaryData.json"),
+      path.resolve(__dirname, "./app/data/temporaryData.json"),
       JSON.stringify(presentFile)
     );
     event.returnValue = "removed Array ID:" + Id;
