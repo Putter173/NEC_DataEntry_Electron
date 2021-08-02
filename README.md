@@ -26,10 +26,19 @@
             └── dbFunctions.js          # Contains Javascript Functions that deal with Local (User Generated) Arrays
             
 ## Get Started
+Note: Make sure to have both "Git" and "Node Js + Npm" already installed and setup on your computer.
     git clone https://github.com/Putter173/NEC_DataEntry_Electron.git
     cd NEC_DataEntry_Electron
     npm i
     npm start
+### Build/Package File
+Note: Current only tested for windows  / This repository has only been built on Windows previously.
+Important:Please follow the steps in "Get Started" before continuing.
+    npm run build-installer
+
+Setup exacutable will then be located in the generated "dist" folder
+Un-packed exacutable will be located in "dist/win-unpacked"
+    
    
 ## Google Account used for API
 Email: nec.lab.sut@gmail.com <br />

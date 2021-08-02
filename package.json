@@ -5,13 +5,27 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . Cell-Data-Manager"
+    "build-installer": "electron-builder"
+  },
+  "build": {
+    "appId": "com.putter173.cell-data-manager",
+    "win": {
+      "target": "nsis",
+      "icon": "./app/assets/icon.ico"
+    },
+    "nsis": {
+      "installerIcon": "./app/assets/icon.ico",
+      "uninstallerIcon": "./app/assets/icon.ico",
+      "uninstallDisplayName": "Cell Data Manager Uninstaller",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "author": "Putter173",
   "license": "ISC",
   "devDependencies": {
     "electron": "^13.1.7",
-    "electron-packager": "^15.3.0"
+    "electron-builder": "^22.11.7"
   },
   "dependencies": {
     "google-spreadsheet": "^3.1.15"
