@@ -4,257 +4,269 @@
     <title>Cell Data Manager</title>
     <script src="js/dbFunctions.js"></script>
     <script src="js/mainFunctions.js"></script>
-    <link rel="stylesheet" href="css/bulma.min.css">
-    <link rel="stylesheet" href="css/extra.css">
-    <script>      
+    <link rel="stylesheet" href="css/bulma.min.css" />
+    <link rel="stylesheet" href="css/extra.css" />
+    <script>
       // Permanemt script function
-      const input = document.querySelector('input');
+      const input = document.querySelector("input");
       function autoSave() {
         let activeEl = document.getElementsByClassName("active")[0]; // Identify previous Element
         let activeElId = activeEl.innerHTML;
-        saveCurrentValues(activeElId - 1)
+        saveCurrentValues(activeElId - 1);
       }
-      window.addEventListener('input', autoSave);
+      window.addEventListener("input", autoSave);
     </script>
   </head>
-  <body class="columns" style="background-color: #e0e0e0;padding: .5vw;font-family: 'Courier New', Courier, monospace;margin: 0;overflow: hidden" onload="bootWithRecent()">
-    <div class="columm">
+  <body class="row body" onload="bootWithRecent()">
+    <div>
       <ul id="barList">
-        <a><li id="max" style="display: none;">max</li></a>
-        <a><li id="add" onclick="addLi()">+</li></a>
         <a><li id="bar1" class="active" onclick="refreshActive('bar1')">1</li></a>
-    </ul>
+        <div id="blank"></div>
+      </ul>
+      <a><div id="add" onclick="addLi()">+</div></a>
     </div>
-    <div class="columm" style="height: 100vh;">
-      <div class="box content">
-          <h1>General Data</h1> 
-          <div class="columns" style="display: flex;">
-              <label class="column"> Test-Code
-                  <input class="input" id="testCode">
+    <div id="secondMainDiv">
+        <div class="box content">
+            <h1>General Data</h1>
+            <div class="columns">
+              <label class="column">
+                Test-Code
+                <input class="input" id="testCode" />
               </label>
-              <label class="column"> Cathode
-                  <input class="input" id="cathode">
+              <label class="column">
+                Cathode
+                <input class="input" id="cathode" />
               </label>
-              <label class="column"> Anode
-                  <input class="input" id="anode">
+              <label class="column">
+                Anode
+                <input class="input" id="anode" />
               </label>
-              <label class="column"> Anode Solution
-                  <input class="input" id="anodeSol">
+              <label class="column">
+                Anode Solution
+                <input class="input" id="anodeSol" />
               </label>
-              <label class="column"> Anode Thickness (μ)
-                  <input class="input" id="anodeThick">
+              <label class="column">
+                Anode Thickness (μ)
+                <input class="input" id="anodeThick" />
               </label>
+            </div>
+            <h2>NEC</h2>
+            <div class="columns">
+              <label class="column">
+                NEC Layer
+                <input class="input" id="necLayer" />
+              </label>
+              <label class="column">
+                NEC (Watt)
+                <input class="input" id="necWatt" />
+              </label>
+              <label class="column">
+                NEC (Minute)
+                <input class="input" id="necMinute" />
+              </label>
+              <label class="column">
+                Protect Layer
+                <input class="input" id="protectLayer" />
+              </label>
+              <label class="column">
+                Protect (Watt)
+                <input class="input" id="protectWatt" />
+              </label>
+              <label class="column">
+                Protect (Time)
+                <input class="input" id="protectTime" />
+              </label>
+            </div>
           </div>
-          <h2>NEC</h2> 
-          <div class="columns" style="display: flex;">
-              <label class="column"> NEC Layer 
-                  <input class="input" id="necLayer">
-              </label>
-              <label class="column"> NEC (Watt) 
-                  <input class="input" id="necWatt">
-              </label>
-              <label class="column"> NEC (Minute) 
-                  <input class="input" id="necMinute">
-              </label>
-              <label class="column"> Protect Layer 
-                  <input class="input" id="protectLayer">
-              </label>
-              <label class="column"> Protect (Watt)
-                  <input class="input" id="protectWatt">
-              </label>
-              <label class="column"> Protect (Time) 
-                  <input class="input" id="protectTime">
-              </label>
-          </div>
-      </div>
-      <div class="columns" style="place-items: center;">
-          <div class="column box content" style="margin: .75rem .75rem 0.5vw .75rem; max-width: 20vw;text-align: center;">
-              <h1>mA Cal.</h1>
-              <label> Electrode Mass <br>
-                  <input id="mass" class="input" style="max-width: 80%;text-align: center;" type="number" onChange="calculate()">
-              </label>
-              <br>
-              <br>
-                  <label> Anode Foil <br>
-                      <table>
-                          <tr>
-                              <td>
-                                  <div class="select">
-                                      <select id="anodeFoil" onChange="electrodeMass()">
-                                          <option value="Cu">Cu</option>
-                                          <option value="Al">Al</option>
-                                      </select>
-                                  </div>
-                              </td>
-                              <td style="vertical-align: middle;">
-                                  <input class="input" style="width: 100%;text-align: center;" value="0.0175" id="anodeFoilMass" onChange="calculate()">
-                              </td>
-                          </tr>
-                      </table>
-                  </label>
-              <br>
-              <div>
-                  <label> Cathode Foil <br>
-                      <table>
-                          <tr>
-                              <td>
-                                  <div class="select">
-                                      <select id="cathodeFoil" onChange="electrodeMass()">
-                                          <option value="Al">Al</option>
-                                          <option value="Cu">Cu</option>
-                                      </select>
-                                  </div>
-                              </td>
-                              <td style="vertical-align: middle;">
-                                  <input class="input" style="width: 100%;text-align: center;" value="0.0106" id="cathodeFoilMass" onChange="calculate()">
-                              </td>
-                          </tr>
-                      </table>
-                  </label>
-              </div>
-              <br>
-              <label> A/g <br>
-                  <input  id="ampPerGram" class="input" style="max-width: 80%;text-align: center;" value="0.025">
-              </label>
-              <br>
-              <br>
-              <label> Current (mA) <br><br>
-                  <div id="result" style="text-align: center;" onChange="calculate()">
-                      ...
-                  </div>
-              </label>
-              <br>
-              <button class="button" style="font-family: 'Courier New', Courier, monospace;font-weight: bold;" id="copy" onclick="cc()">Copy</button> 
-          </div>
-          <div class="box content column" style="margin: .75rem .75rem 2vw .75rem;height: fit-content;min-width: fit-content;">
-              <h1>Cycles</h1> 
-              <table>
-                  <tr>
-                      <th style="border: none;">
-                          Cycle
-                      </th>
-                      <th style="border: none;">
-                          Energy discharge (mWh)
-                      </th>
-                      <th style="border: none;">
-                          Cycle
-                      </th>
-                      <th style="border: none;">
-                          Energy discharge (mWh)
-                      </th>
-                      <th style="border: none;">
-                          Cycle
-                      </th>
-                      <th style="border: none;">
-                          Energy discharge (mWh)
-                      </th>
-                  </tr>
-                  <tr>
-                      <td style="text-align: center;vertical-align: middle;border: none;">
-                          1
-                      </td>
-                      <td style="border: none;">
-                          <input class="input" type="number" id="c1">
-                      </td>
-                      <td style="text-align: center;vertical-align: middle;border: none;">
-                          6
-                      </td style="border: none;">
-                      <td style="border: none;">
-                          <input class="input" type="number" id="c6">
-                      </td>
-                      <td style="text-align: center;vertical-align: middle;border: none;">
-                          15
-                      </td style="border: none;">
-                      <td style="border: none;">
-                          <input class="input" type="number" id="c15">
-                      </td>
-                  </tr>
-                  <tr>
-                      <td style="text-align: center;vertical-align: middle;border: none;">
-                          2
-                      </td>
-                      <td style="border: none;">
-                          <input class="input" type="number" id="c2">
-                      </td>
-                      <td style="text-align: center;vertical-align: middle;border: none;">
-                          7
-                      </td>
-                      <td style="border: none;">
-                          <input class="input" type="number" id="c7">
-                      </td>
-                      <td style="text-align: center;vertical-align: middle;border: none;">
-                          20
-                      </td>
-                      <td style="border: none;">
-                          <input class="input" type="number" id="c20">
-                      </td>
-                  </tr>
-                  <tr>
-                      <td style="text-align: center;vertical-align: middle;border: none;">
-                          3
-                      </td>
-                      <td style="border: none;">
-                          <input class="input" type="number" id="c3">
-                      </td>
-                      <td style="text-align: center;vertical-align: middle;border: none;">
-                          8
-                      </td>
-                      <td style="border: none;">
-                          <input class="input" type="number" id="c8">
-                      </td>
-                      <td style="text-align: center;vertical-align: middle;border: none;">
-                          30
-                      </td>
-                      <td style="border: none;">
-                          <input class="input" type="number" id="c30">
-                      </td>
-                  </tr>
-                  <tr>
-                      <td style="text-align: center;vertical-align: middle;border: none;">
-                          4
-                      </td>
-                      <td style="border: none;">
-                          <input class="input" type="number" id="c4">
-                      </td>
-                      <td style="text-align: center;vertical-align: middle;border: none;">
-                          9
-                      </td>
-                      <td style="border: none;">
-                          <input class="input" type="number" id="c9">
-                      </td>
-                      <td style="text-align: center;vertical-align: middle;border: none;">
-                          50
-                      </td>
-                      <td style="border: none;">
-                          <input class="input" type="number" id="c50">
-                      </td>
-                  </tr>
-                  <tr>
-                      <td style="text-align: center;vertical-align: middle;border: none;">
-                          5
-                      </td>
-                      <td style="border: none;">
-                          <input class="input" type="number" id="c5">
-                      </td>
-                      <td style="text-align: center;vertical-align: middle;border: none;">
-                          10
-                      </td>
-                      <td style="border: none;">
-                          <input class="input" type="number" id="c10">
-                      </td>
-                      <td style="text-align: center;vertical-align: middle;border: none;">
-                          100
-                      </td>
-                      <td style="border: none;">
-                          <input class="input" type="number" id="c100">
-                      </td>
-                  </tr>
-              </table>
-              <div style="display: inline;float: right;">
-                  <button id="removeBtn" class="button" style="font-family: 'Courier New', Courier, monospace;font-weight: bold;" onclick="removeArray()">Remove</button>    
-                  <button id="uploadBtn" class="button" style="font-family: 'Courier New', Courier, monospace;font-weight: bold;" onclick="uploadBtn()">Upload</button>
-              </div>
-          </div>
-      </div>
+          <div class="columns">
+            <div id="maCalDiv" class="column box content">
+                <h1>mA Cal.</h1>
+                <label> Electrode Mass <br>
+                    <input id="mass" class="input calInput selectInput" type="number" onchange="calculate()">
+                </label>
+                <br>
+                <br>
+                    <label> Anode Foil <br>
+                        <table>
+                            <tbody><tr>
+                                <td>
+                                    <div class="select">
+                                        <select id="anodeFoil" onchange="electrodeMass()">
+                                            <option value="Cu">Cu</option>
+                                            <option value="Al">Al</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input class="input calInput" value="0.0175" id="anodeFoilMass" onchange="calculate()">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </label>
+                <br>
+                <div>
+                    <label> Cathode Foil <br>
+                        <table>
+                            <tbody><tr>
+                                <td>
+                                    <div class="select">
+                                        <select id="cathodeFoil" onchange="electrodeMass()">
+                                            <option value="Al">Al</option>
+                                            <option value="Cu">Cu</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input class="input calInput" value="0.0106" id="cathodeFoilMass" onchange="calculate()">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </label>
+                </div>
+                <br>
+                <label> A/g <br>
+                    <input id="ampPerGram" class="input calInput selectInput" value="0.025">
+                </label>
+                <br>
+                <br>
+                <label> Current (mA) <br><br>
+                    <div id="result" onchange="calculate()">
+                        ...
+                    </div>
+                </label>
+                <br>
+                <button class="button" id="copy" onclick="cc()">Copy</button> 
+            </div>
+            <div id="cyclesDiv" class="box content column">
+                <h1>Cycles</h1> 
+                <table>
+                    <tbody><tr>
+                        <th>
+                            Cycle
+                        </th>
+                        <th>
+                            Energy discharge (mWh)
+                        </th>
+                        <th>
+                            Cycle
+                        </th>
+                        <th>
+                            Energy discharge (mWh)
+                        </th>
+                        <th>
+                            Cycle
+                        </th>
+                        <th>
+                            Energy discharge (mWh)
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            <input class="input" type="number" id="c1">
+                        </td>
+                        <td>
+                            6
+                        </td>
+                        <td>
+                            <input class="input" type="number" id="c6">
+                        </td>
+                        <td>
+                            15
+                        </td>
+                        <td>
+                            <input class="input" type="number" id="c15">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2
+                        </td>
+                        <td>
+                            <input class="input" type="number" id="c2">
+                        </td>
+                        <td>
+                            7
+                        </td>
+                        <td>
+                            <input class="input" type="number" id="c7">
+                        </td>
+                        <td>
+                            20
+                        </td>
+                        <td>
+                            <input class="input" type="number" id="c20">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            3
+                        </td>
+                        <td>
+                            <input class="input" type="number" id="c3">
+                        </td>
+                        <td>
+                            8
+                        </td>
+                        <td>
+                            <input class="input" type="number" id="c8">
+                        </td>
+                        <td>
+                            30
+                        </td>
+                        <td>
+                            <input class="input" type="number" id="c30">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            4
+                        </td>
+                        <td>
+                            <input class="input" type="number" id="c4">
+                        </td>
+                        <td>
+                            9
+                        </td>
+                        <td>
+                            <input class="input" type="number" id="c9">
+                        </td>
+                        <td>
+                            50
+                        </td>
+                        <td>
+                            <input class="input" type="number" id="c50">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            5
+                        </td>
+                        <td>
+                            <input class="input" type="number" id="c5">
+                        </td>
+                        <td>
+                            10
+                        </td>
+                        <td>
+                            <input class="input" type="number" id="c10">
+                        </td>
+                        <td>
+                            100
+                        </td>
+                        <td>
+                            <input class="input" type="number" id="c100">
+                        </td>
+                    </tr>
+                </tbody></table>
+                <div id="buttonDiv">
+                    <button id="removeBtn" class="button" onclick="removeArray()">Remove</button>    
+                    <button id="uploadBtn" class="button" onclick="uploadBtn()">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
   </body>
 </html>

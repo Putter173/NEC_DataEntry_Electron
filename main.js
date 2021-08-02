@@ -6,9 +6,9 @@ const fs = require("fs");
 function createWindow() {
   const win = new BrowserWindow({
     height: 833,
-    width: 1120,
+    width: 1130,
     minHeight: 833,
-    minWidth: 1120,
+    minWidth: 1130,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,

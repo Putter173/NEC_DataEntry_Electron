@@ -155,7 +155,8 @@ function saveCurrentValues(Id) {
 function bootWithRecent() {
   let totalBarVal = ipcRenderer.sendSync("storredArray", true);
   let currentBarVal = Number(document.querySelectorAll("#barList li").length);
-  currentBarVal = currentBarVal - 2;
+  const element = document.getElementById("barList");
+  element.removeChild(element.lastElementChild)
   while (currentBarVal < totalBarVal) {
     currentBarVal++;
     // Create New Element (Note: listEL = List element, elValue = Element Value, & linkEl = Link Element)
@@ -165,7 +166,7 @@ function bootWithRecent() {
     listEl.appendChild(elValue);
 
     // Add Attributes to New Element
-    let element = document.getElementById("barList");
+
     listEl.setAttribute("id", "bar" + currentBarValStr); // Create & Add "id" attribute
     listEl.setAttribute(
       "onclick",
@@ -177,6 +178,9 @@ function bootWithRecent() {
     linkEl.appendChild(listEl);
     element.appendChild(linkEl);
   }
+  let blankDiv = document.createElement("div")
+  blankDiv.setAttribute("id", "blank")
+  element.appendChild(blankDiv)
   loadStoredValues(0);
 }
 
@@ -199,12 +203,17 @@ function refreshActive(val) {
 }
 
 function addLi() {
+  // Remove Blank Div
+  const barListEl = document.getElementById("barList");
+  barListEl.removeChild(barListEl.lastElementChild)
+
+
   let totalBarVal = ipcRenderer.sendSync("storredArray", true); // Get Current Bar Value
   document.getElementsByClassName("active")[0].removeAttribute("class"); // Remove "active" Class from previous Element
 
   // Check, Update, and Lmit Total Bar Value
   totalBarVal = totalBarVal + 1;
-  if (totalBarVal === 15) {
+  if (totalBarVal === 99) {
     let attr = document.createAttribute("style");
     attr.value = "display: none;";
     document.getElementById("add").setAttributeNode(attr);
@@ -233,6 +242,11 @@ function addLi() {
   element.appendChild(linkEl);
   addNewArray();
   loadStoredValues(totalBarVal);
+
+  // Add Blank Div Back
+  let blankDiv = document.createElement("div")
+  blankDiv.setAttribute("id", "blank")
+  element.appendChild(blankDiv)
 }
 
 function removeArray() {

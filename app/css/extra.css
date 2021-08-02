@@ -1,4 +1,18 @@
-/* Tab Bar CSS */
+.row {
+  display: flex;
+}
+
+.body {
+  background-color: #e0e0e0;
+  padding: 0.5vw;
+  font-family: "Courier New", Courier, monospace;
+  margin: 0;
+  height: 100vh;
+}
+
+.column {
+  padding: 0.75rem;
+}
 
 #barList {
   width: fit-content;
@@ -6,11 +20,14 @@
   position: relative;
   height: 100%;
   background-color: #e0e0e0;
+  overflow: auto;
+  white-space: nowrap;
 }
 
-li {
-  width: 1.4218888889em;
-  height: 1.4218888889em;
+li,
+#add {
+  width: 52px;
+  height: 52px;
   margin-bottom: 0.5vw;
   border-radius: 6px;
   background-color: #fff;
@@ -24,7 +41,6 @@ li {
 }
 li:hover {
   background-color: #f2f2f2;
-  color: #000;
 }
 li.active {
   background: rgb(176, 38, 255);
@@ -35,25 +51,80 @@ li.active {
   );
   color: #fff;
 }
+
+#blank {
+  background-color: transparent;
+  width: 52px;
+  height: 52px;
+}
+
 #add {
   background-color: #6dce80;
   color: #fff;
   position: absolute;
   margin: 0;
-  bottom: 1vw;
+  bottom: 0.25vw;
 }
 #add:hover {
   background-color: #55bd68;
 }
-#max {
-  background-color: #ff6961;
-  color: #fff;
-  position: absolute;
-  margin: 0;
-  font-size: 1.75em;
-  width: 1.8281428571em;
-  height: 1.8281428571em;
-  bottom: 1vw;
+
+.box {
+  height: fit-content;
+}
+
+.content h1 {
+  font-size: 22px;
+}
+.content h2 {
+  font-size: 18px;
+}
+
+p,
+div,
+.input {
+  font-size: 14px;
+}
+
+#secondMainDiv {
+    place-items: center;
+    margin:0;
+    width: 100%;
+}
+
+#maCalDiv {
+    margin: .75rem .75rem 0.5vw .75rem; 
+    max-width: 20vw;
+    text-align: center;
+}
+
+.calInput {
+    width: 100%;
+    text-align: center;
+}
+
+.selectInput {
+    max-width: 80%;
+    
+}
+
+button.button {
+    font-family: 'Courier New', Courier, monospace;font-weight: bold;
+}
+
+#cyclesDiv {
+    margin: .75rem .75rem 2vw .75rem;
+    height: fit-content;
+    min-width: fit-content;
+}
+
+.content table td, .content table th {
+    text-align: center;vertical-align: middle;border: none;
+}
+
+#buttonDiv {
+    display: inline;
+    float: right;
 }
 
 .button,
@@ -84,17 +155,4 @@ li.active {
 
 #uploadBtn.is-loading {
   background-color: #55bd68
-}
-
-.content h1 {
-  font-size: 22px ;
-}
-.content h2 {
-  font-size: 18px;
-}
-
-p,
-div,
-.input {
-  font-size: 14px;
 }
