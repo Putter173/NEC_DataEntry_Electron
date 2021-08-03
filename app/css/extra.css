@@ -29,7 +29,8 @@
 }
 
 li,
-#add {
+#add,
+#max {
   width: 52px;
   height: 52px;
   margin-bottom: 0.5vw;
@@ -71,6 +72,15 @@ li.active {
 }
 #add:hover {
   background-color: #55bd68;
+}
+
+#max {
+  background-color: #ff6961;
+  color: #fff;
+  position: absolute;
+  font-size: 1.75em;
+  margin: 0;
+  bottom: 0.25vw;
 }
 
 .box {

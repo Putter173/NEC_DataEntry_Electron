@@ -1,69 +1,43 @@
 const { ipcRenderer } = require("electron");
 
+const emptyArray = {
+  maker: "",
+  testCode: "",
+  cathode: "",
+  anode: "",
+  anodeSol: "",
+  anodeThick: "",
+  anodeFoil: "Cu",
+  necLayer: "",
+  necWatt: "",
+  necMinute: "",
+  protectLayer: "",
+  protectWatt: "",
+  protectTime: "",
+  necLayerCode: "",
+  mass: "",
+  c1: "",
+  c2: "",
+  c3: "",
+  c4: "",
+  c5: "",
+  c6: "",
+  c7: "",
+  c8: "",
+  c9: "",
+  c10: "",
+  c15: "",
+  c20: "",
+  c30: "",
+  c50: "",
+  c100: "",
+};
+
 function addNewArray() {
-  let emptyArray = {
-    testCode: "",
-    cathode: "",
-    anode: "",
-    anodeSol: "",
-    anodeThick: "",
-    anodeFoil: "Cu",
-    necLayer: "",
-    necWatt: "",
-    necMinute: "",
-    protectLayer: "",
-    protectWatt: "",
-    protectTime: "",
-    mass: "",
-    c1: "",
-    c2: "",
-    c3: "",
-    c4: "",
-    c5: "",
-    c6: "",
-    c7: "",
-    c8: "",
-    c9: "",
-    c10: "",
-    c15: "",
-    c20: "",
-    c30: "",
-    c50: "",
-    c100: "",
-  };
   ipcRenderer.sendSync("modArray", emptyArray);
 }
+
 function clearExistArray(arg) {
-  let emptyArray = {
-    testCode: "",
-    cathode: "",
-    anode: "",
-    anodeSol: "",
-    anodeThick: "",
-    anodeFoil: "Cu",
-    necLayer: "",
-    necWatt: "",
-    necMinute: "",
-    protectLayer: "",
-    protectWatt: "",
-    protectTime: "",
-    mass: "",
-    c1: "",
-    c2: "",
-    c3: "",
-    c4: "",
-    c5: "",
-    c6: "",
-    c7: "",
-    c8: "",
-    c9: "",
-    c10: "",
-    c15: "",
-    c20: "",
-    c30: "",
-    c50: "",
-    c100: "",
-  };
   ipcRenderer.sendSync("modArray", emptyArray, arg);
 }
 
@@ -81,34 +55,36 @@ function loadStoredValues(Id) {
       document.getElementById(id).value = value;
     }
   } else if (Id > val) {
+    (document.getElementById("maker").value = ""),
     (document.getElementById("testCode").value = ""),
-      (document.getElementById("cathode").value = ""),
-      (document.getElementById("anode").value = ""),
-      (document.getElementById("anodeSol").value = ""),
-      (document.getElementById("anodeThick").value = ""),
-      (document.getElementById("anodeFoil").value = "Cu"),
-      (document.getElementById("necLayer").value = ""),
-      (document.getElementById("necWatt").value = ""),
-      (document.getElementById("necMinute").value = ""),
-      (document.getElementById("protectLayer").value = ""),
-      (document.getElementById("protectWatt").value = ""),
-      (document.getElementById("protectTime").value = ""),
-      (document.getElementById("mass").value = ""),
-      (document.getElementById("c1").value = ""),
-      (document.getElementById("c2").value = ""),
-      (document.getElementById("c3").value = ""),
-      (document.getElementById("c4").value = ""),
-      (document.getElementById("c5").value = ""),
-      (document.getElementById("c6").value = ""),
-      (document.getElementById("c7").value = ""),
-      (document.getElementById("c8").value = ""),
-      (document.getElementById("c9").value = ""),
-      (document.getElementById("c10").value = ""),
-      (document.getElementById("c15").value = ""),
-      (document.getElementById("c20").value = ""),
-      (document.getElementById("c30").value = ""),
-      (document.getElementById("c50").value = ""),
-      (document.getElementById("c100").value = "");
+    (document.getElementById("cathode").value = ""),
+    (document.getElementById("anode").value = ""),
+    (document.getElementById("anodeSol").value = ""),
+    (document.getElementById("anodeThick").value = ""),
+    (document.getElementById("anodeFoil").value = "Cu"),
+    (document.getElementById("necLayer").value = ""),
+    (document.getElementById("necWatt").value = ""),
+    (document.getElementById("necMinute").value = ""),
+    (document.getElementById("protectLayer").value = ""),
+    (document.getElementById("protectWatt").value = ""),
+    (document.getElementById("necLayerCode").value = ""),
+    (document.getElementById("maker").value = ""),
+    (document.getElementById("mass").value = ""),
+    (document.getElementById("c1").value = ""),
+    (document.getElementById("c2").value = ""),
+    (document.getElementById("c3").value = ""),
+    (document.getElementById("c4").value = ""),
+    (document.getElementById("c5").value = ""),
+    (document.getElementById("c6").value = ""),
+    (document.getElementById("c7").value = ""),
+    (document.getElementById("c8").value = ""),
+    (document.getElementById("c9").value = ""),
+    (document.getElementById("c10").value = ""),
+    (document.getElementById("c15").value = ""),
+    (document.getElementById("c20").value = ""),
+    (document.getElementById("c30").value = ""),
+    (document.getElementById("c50").value = ""),
+    (document.getElementById("c100").value = "");
   } else {
     throw "Error in loadStoredValues Function";
   }
@@ -119,6 +95,7 @@ function loadStoredValues(Id) {
 
 function saveCurrentValues(Id) {
   let currentArray = {
+    maker: document.getElementById("maker").value,
     testCode: document.getElementById("testCode").value,
     cathode: document.getElementById("cathode").value,
     anode: document.getElementById("anode").value,
@@ -131,6 +108,7 @@ function saveCurrentValues(Id) {
     protectLayer: document.getElementById("protectLayer").value,
     protectWatt: document.getElementById("protectWatt").value,
     protectTime: document.getElementById("protectTime").value,
+    necLayerCode: document.getElementById("necLayerCode").value,
     mass: document.getElementById("mass").value,
     c1: document.getElementById("c1").value,
     c2: document.getElementById("c2").value,
@@ -274,6 +252,7 @@ function removeArray() {
 
 
 function uploadArray() {
+  const maker = document.getElementById("maker").value;
   const testCode = document.getElementById("testCode").value;
   const cathode = document.getElementById("cathode").value;
   const anode = document.getElementById("anode").value;
@@ -286,6 +265,7 @@ function uploadArray() {
   const protectLayer = document.getElementById("protectLayer").value;
   const protectWatt = document.getElementById("protectWatt").value;
   const protectTime = document.getElementById("protectTime").value;
+  const necLayerCode = document.getElementById("necLayerCode").value;
   const mass = document.getElementById("mass").value;
   const c1 = document.getElementById("c1").value;
   const c2 = document.getElementById("c2").value;
@@ -303,6 +283,7 @@ function uploadArray() {
   const c50 = document.getElementById("c50").value;
   const c100 = document.getElementById("c100").value;
   const value = [
+    maker,
     testCode,
     cathode,
     anode,
@@ -315,6 +296,7 @@ function uploadArray() {
     protectLayer,
     protectWatt,
     protectTime,
+    necLayerCode,
     mass,
     c1,
     c2,
