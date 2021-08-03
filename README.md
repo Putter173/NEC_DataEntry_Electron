@@ -1,8 +1,6 @@
 # NEC_DataEntry_Electron
 
 ## To do:
-* Add Name Input
-* Add NEC Layer Input
 * Code Cleanup & Comments
 
 ## Current Repository File Structure
