@@ -349,7 +349,7 @@ function uploadArray() {
           "style",
           "font-family: 'Courier New', Courier, monospace;font-weight: bold;"
         );
-      document.getElementById("uploadBtn").innerHTML = "Start";
+      document.getElementById("uploadBtn").innerHTML = "Upload";
     }, 1000);
     removeArray();
   } else {

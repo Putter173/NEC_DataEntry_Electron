@@ -1,6 +1,8 @@
 # NEC_DataEntry_Electron
 
 ## To do:
+* Add Name Input
+* Add NEC Layer Input
 * Code Cleanup & Comments
 
 ## Current Repository File Structure
@@ -14,6 +16,8 @@
     ├── main.js                         # Contains Electron's Main Process - Along with all of it's functions
     └── app
         ├── index.html                  # Main/Only HTML File (Basically the front-end)
+        ├── assets
+        │   └── icon.ico                # Application Icon                
         ├── data
         │   ├── googleLoginCreds.json   # Credentials for Google Sheets API
         │   └── temporaryData.json      # Contains Local (User Generated) Array Data
