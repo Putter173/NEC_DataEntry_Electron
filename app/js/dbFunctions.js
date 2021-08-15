@@ -7,7 +7,6 @@ const emptyArray = {
   anode: "",
   anodeSol: "",
   anodeThick: "",
-  notes: "",
   anodeFoil: "Cu",
   necLayer: "",
   necWatt: "",
@@ -16,6 +15,10 @@ const emptyArray = {
   protectWatt: "",
   protectTime: "",
   necLayerCode: "",
+  temp: "",
+  reactiveGas: "",
+  spacer: "",
+  notes: "",
   mass: "",
   c1: "",
   c2: "",
@@ -77,7 +80,6 @@ function loadStoredValues(Id) {
       (document.getElementById("anode").value = ""),
       (document.getElementById("anodeSol").value = ""),
       (document.getElementById("anodeThick").value = ""),
-      (document.getElementById("notes").value = ""),
       (document.getElementById("anodeFoil").value = "Cu"),
       (document.getElementById("necLayer").value = ""),
       (document.getElementById("necWatt").value = ""),
@@ -85,7 +87,10 @@ function loadStoredValues(Id) {
       (document.getElementById("protectLayer").value = ""),
       (document.getElementById("protectWatt").value = ""),
       (document.getElementById("necLayerCode").value = ""),
-      (document.getElementById("maker").value = ""),
+      (document.getElementById("temp").value = ""),
+      (document.getElementById("reactiveGas").value = ""),
+      (document.getElementById("spacer").value = ""),
+      (document.getElementById("notes").value = ""),
       (document.getElementById("mass").value = ""),
       (document.getElementById("c1").value = ""),
       (document.getElementById("c2").value = ""),
@@ -133,7 +138,6 @@ function saveCurrentValues(Id) {
     anode: document.getElementById("anode").value,
     anodeSol: document.getElementById("anodeSol").value,
     anodeThick: document.getElementById("anodeThick").value,
-    notes: document.getElementById("notes").value,
     anodeFoil: document.getElementById("anodeFoil").value,
     necLayer: document.getElementById("necLayer").value,
     necWatt: document.getElementById("necWatt").value,
@@ -142,6 +146,10 @@ function saveCurrentValues(Id) {
     protectWatt: document.getElementById("protectWatt").value,
     protectTime: document.getElementById("protectTime").value,
     necLayerCode: document.getElementById("necLayerCode").value,
+    temp: document.getElementById("temp").value,
+    reactiveGas: document.getElementById("reactiveGas").value,
+    spacer: document.getElementById("spacer").value,
+    notes: document.getElementById("notes").value,
     mass: document.getElementById("mass").value,
     c1: document.getElementById("c1").value,
     c2: document.getElementById("c2").value,
@@ -297,18 +305,8 @@ function removeArray() {
 }
 
 function uploadArray() {
-  var anodeInput = document.getElementById("anodeFoil").value;
-  var cathodeInput = document.getElementById("cathodeFoil").value;
-  if (anodeInput === "Al") {
-    anodeMass = '0.0106';
-  } else if (anodeInput === "Cu") {
-    anodeMass = '0.0175';
-  }
-  if (cathodeInput === "Al") {
-    cathodeMass = '0.0106';
-  } else if (cathodeInput === "Cu") {
-    cathodeMass = '0.0175';
-  }
+  var anodeMass = document.getElementById("anodeFoilMass").value;
+  var cathodeMass = document.getElementById("cathodeFoilMass").value;
   const newRowNum = ipcRenderer.sendSync("getCurrentRowVal");
 
   const maker = document.getElementById("maker").value;
@@ -317,7 +315,6 @@ function uploadArray() {
   const anode = document.getElementById("anode").value;
   const anodeSol = document.getElementById("anodeSol").value;
   const anodeThick = document.getElementById("anodeThick").value;
-  const notes = document.getElementById("notes").value;
   const anodeFoil = document.getElementById("anodeFoil").value;
   const necLayer = document.getElementById("necLayer").value;
   const necWatt = document.getElementById("necWatt").value;
@@ -326,6 +323,10 @@ function uploadArray() {
   const protectWatt = document.getElementById("protectWatt").value;
   const protectTime = document.getElementById("protectTime").value;
   const necLayerCode = document.getElementById("necLayerCode").value;
+  const temp = document.getElementById("temp").value;
+  const reactiveGas = document.getElementById("reactiveGas").value;
+  const spacer = document.getElementById("spacer").value;
+  const notes = document.getElementById("notes").value;
   const mass = document.getElementById("mass").value;
   const activeMass = "=P" + newRowNum + "-" + anodeMass + "-" + cathodeMass;
   const c1 = document.getElementById("c1").value;
@@ -373,6 +374,9 @@ function uploadArray() {
     protectWatt,
     protectTime,
     necLayerCode,
+    temp,
+    reactiveGas,
+    spacer,
     notes,
     mass,
     activeMass,
@@ -416,7 +420,7 @@ function uploadArray() {
         "style",
         "font-family: 'Courier New', Courier, monospace;font-weight: bold;background-color: #55bd68"
       );
-    document.getElementById("uploadBtn").innerHTML = "Success!";
+    document.getElementById("uploadBtn").innerHTML = "Uploaded Successfully!";
     setTimeout(function () {
       document
         .getElementById("uploadBtn")
@@ -428,6 +432,22 @@ function uploadArray() {
     }, 1000);
     removeArray();
   } else {
-    console.log("Error while uploading Array");
+    document.getElementById("uploadBtn").setAttribute("class", "button");
+    document
+      .getElementById("uploadBtn")
+      .setAttribute(
+        "style",
+        "font-family: 'Courier New', Courier, monospace;font-weight: bold;background-color: #ff6961"
+      );
+    document.getElementById("uploadBtn").innerHTML = "Upload Failed!";
+    setTimeout(function () {
+      document
+        .getElementById("uploadBtn")
+        .setAttribute(
+          "style",
+          "font-family: 'Courier New', Courier, monospace;font-weight: bold;"
+        );
+      document.getElementById("uploadBtn").innerHTML = "Upload";
+    }, 1000);
   }
 }

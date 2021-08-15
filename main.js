@@ -5,10 +5,10 @@ const fs = require("fs");
 
 function createWindow() {
   const win = new BrowserWindow({
-    height: 833,
+    height: 900,
     width: 1470,
     minHeight: 86,
-    minWidth: 15,
+    minWidth: 1470,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -77,11 +77,14 @@ ipcMain.on("removeArray", (event, Id) => {
     event.returnValue = "removed Array ID:" + Id;
   });
 });
+
+const doc = new GoogleSpreadsheet(
+  "1aDmAtZ5HRVz3LEqLyKWQHfIf9oVbjalmMcn4fLeqht0"
+);
+const credentials = require("./app/data/googleLoginCreds.json");
+
 ipcMain.on("getCurrentRowVal", (event, data) => {
-  const doc = new GoogleSpreadsheet(
-    "1aDmAtZ5HRVz3LEqLyKWQHfIf9oVbjalmMcn4fLeqht0"
-  );
-  const credentials = require("./app/data/googleLoginCreds.json");
+  
   async function getCurrentRowVal() {
     await doc.useServiceAccountAuth(credentials);
     await doc.loadInfo();
@@ -94,18 +97,13 @@ ipcMain.on("getCurrentRowVal", (event, data) => {
 });
 
 ipcMain.on("uploadArray", (event, data) => {
-  const doc = new GoogleSpreadsheet(
-    "1aDmAtZ5HRVz3LEqLyKWQHfIf9oVbjalmMcn4fLeqht0"
-  );
-  const credentials = require("./app/data/googleLoginCreds.json");
   async function writeToSpreadsheet() {
     await doc.useServiceAccountAuth(credentials);
     await doc.loadInfo();
-    const sheet = doc.sheetsByIndex[0];
+    const sheet = doc.sheetsByTitle['Active Sheet'];
     const rows = await sheet.getRows();
     const newRow = await sheet.addRow(data);
     event.returnValue = "Array Uploaded Successfully";
   }
-  
   writeToSpreadsheet();
 });
