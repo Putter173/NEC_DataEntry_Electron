@@ -7,7 +7,7 @@ function createWindow() {
   const win = new BrowserWindow({
     height: 900,
     width: 1470,
-    minHeight: 86,
+    minHeight: 920,
     minWidth: 1470,
     webPreferences: {
       nodeIntegration: true,
@@ -84,23 +84,22 @@ const doc = new GoogleSpreadsheet(
 const credentials = require("./app/data/googleLoginCreds.json");
 
 ipcMain.on("getCurrentRowVal", (event, data) => {
-  
   async function getCurrentRowVal() {
     await doc.useServiceAccountAuth(credentials);
     await doc.loadInfo();
     const sheet = doc.sheetsByIndex[0];
-    const row = sheet.rowCount
-    rowVal = Number(row) + 1
+    const row = sheet.rowCount;
+    rowVal = Number(row) + 1;
     event.returnValue = rowVal;
   }
-  getCurrentRowVal()
+  getCurrentRowVal();
 });
 
 ipcMain.on("uploadArray", (event, data) => {
   async function writeToSpreadsheet() {
     await doc.useServiceAccountAuth(credentials);
     await doc.loadInfo();
-    const sheet = doc.sheetsByTitle['Active Sheet'];
+    const sheet = doc.sheetsByTitle["Active Sheet"];
     const rows = await sheet.getRows();
     const newRow = await sheet.addRow(data);
     event.returnValue = "Array Uploaded Successfully";

@@ -101,33 +101,33 @@ div,
 }
 
 #secondMainDiv {
-    place-items: center;
-    margin:0;
-    width: 100%;
+  place-items: center;
+  margin: 0;
+  width: 100%;
 }
 
 #maCalDiv {
-    margin: .75rem .75rem 0.5vw .75rem; 
-    max-width: 20vw;
-    text-align: center;
+  margin: 0.75rem 0.75rem 0.5vw 0.75rem;
+  max-width: 20vw;
+  text-align: center;
 }
 
 .calInput {
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 .selectInput {
-    max-width: 80%;
-    
+  max-width: 80%;
 }
 
 button.button {
-    font-family: 'Courier New', Courier, monospace;font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
 }
 
 #othersDiv {
-  margin: .75rem .75rem 0 .75rem;
+  margin: 0.75rem auto 0 auto;
   height: fit-content;
   max-width: 76.5vw;
 }
@@ -137,15 +137,16 @@ button.button {
 }
 
 #cyclesDiv {
-    margin: .75rem .75rem 0 .75rem;
-    height: fit-content;
-    max-width: 76.5vw;
+  margin: 0.75rem 0.75rem 0 0.75rem;
+  height: fit-content;
+  max-width: 76.5vw;
 }
 
-.content table td, .content table th {
-    text-align: center;
-    vertical-align: middle;
-    border: none;
+.content table td,
+.content table th {
+  text-align: center;
+  vertical-align: middle;
+  border: none;
 }
 
 tbody th,
@@ -187,5 +188,5 @@ tbody input {
 }
 
 #uploadBtn.is-loading {
-  background-color: #55bd68
+  background-color: #55bd68;
 }
