@@ -1,19 +1,19 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
-const { GoogleSpreadsheet } = require('google-spreadsheet');
+const { GoogleSpreadsheet } = require("google-spreadsheet");
 const path = require("path");
 const fs = require("fs");
 
 function createWindow() {
   const win = new BrowserWindow({
-    height: 867,
-    width: 1500,
-    minHeight: 867,
-    minWidth: 1500,
+    height: 833,
+    width: 1470,
+    minHeight: 86,
+    minWidth: 15,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     },
-    icon: __dirname + '/app/assets/Icon.ico',
+    icon: __dirname + "/app/assets/Icon.ico",
   });
 
   win.loadFile("app/index.html");
@@ -38,7 +38,7 @@ app.on("window-all-closed", () => {
 // IPC Operations
 
 ipcMain.on("storredArray", (event, arg) => {
-  fs.readFile(__dirname + '/app/data/temporaryData.json', (error, data) => {
+  fs.readFile(__dirname + "/app/data/temporaryData.json", (error, data) => {
     if (arg === true) {
       let responseObj = JSON.parse(data).length;
       event.returnValue = responseObj;
@@ -52,7 +52,7 @@ ipcMain.on("storredArray", (event, arg) => {
 });
 
 ipcMain.on("modArray", (event, Obj, Id) => {
-  fs.readFile(__dirname + '/app/data/temporaryData.json', (error, data) => {
+  fs.readFile(__dirname + "/app/data/temporaryData.json", (error, data) => {
     let presentFile = JSON.parse(data);
     if (Id === undefined) {
       Id = presentFile.length;
@@ -67,7 +67,7 @@ ipcMain.on("modArray", (event, Obj, Id) => {
 });
 
 ipcMain.on("removeArray", (event, Id) => {
-  fs.readFile(__dirname + '/app/data/temporaryData.json', (error, data) => {
+  fs.readFile(__dirname + "/app/data/temporaryData.json", (error, data) => {
     let presentFile = JSON.parse(data);
     presentFile.splice(Id, 1);
     fs.writeFileSync(
@@ -77,17 +77,35 @@ ipcMain.on("removeArray", (event, Id) => {
     event.returnValue = "removed Array ID:" + Id;
   });
 });
+ipcMain.on("getCurrentRowVal", (event, data) => {
+  const doc = new GoogleSpreadsheet(
+    "1aDmAtZ5HRVz3LEqLyKWQHfIf9oVbjalmMcn4fLeqht0"
+  );
+  const credentials = require("./app/data/googleLoginCreds.json");
+  async function getCurrentRowVal() {
+    await doc.useServiceAccountAuth(credentials);
+    await doc.loadInfo();
+    const sheet = doc.sheetsByIndex[0];
+    const row = sheet.rowCount
+    rowVal = Number(row) + 1
+    event.returnValue = rowVal;
+  }
+  getCurrentRowVal()
+});
 
 ipcMain.on("uploadArray", (event, data) => {
-  const doc = new GoogleSpreadsheet('1aDmAtZ5HRVz3LEqLyKWQHfIf9oVbjalmMcn4fLeqht0');
-  const credentials = require('./app/data/googleLoginCreds.json')
+  const doc = new GoogleSpreadsheet(
+    "1aDmAtZ5HRVz3LEqLyKWQHfIf9oVbjalmMcn4fLeqht0"
+  );
+  const credentials = require("./app/data/googleLoginCreds.json");
   async function writeToSpreadsheet() {
     await doc.useServiceAccountAuth(credentials);
-        await doc.loadInfo();
-        const sheet = doc.sheetsByIndex[0];
-        const rows = await sheet.getRows();
-        const newRow = await sheet.addRow(data);
-        event.returnValue = "Array Uploaded Successfully";
-    }
-  writeToSpreadsheet()
+    await doc.loadInfo();
+    const sheet = doc.sheetsByIndex[0];
+    const rows = await sheet.getRows();
+    const newRow = await sheet.addRow(data);
+    event.returnValue = "Array Uploaded Successfully";
+  }
+  
+  writeToSpreadsheet();
 });

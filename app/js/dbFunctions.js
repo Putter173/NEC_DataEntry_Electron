@@ -7,6 +7,7 @@ const emptyArray = {
   anode: "",
   anodeSol: "",
   anodeThick: "",
+  notes: "",
   anodeFoil: "Cu",
   necLayer: "",
   necWatt: "",
@@ -31,6 +32,21 @@ const emptyArray = {
   c30: "",
   c50: "",
   c100: "",
+  vDc1: "",
+  vDc2: "",
+  vDc3: "",
+  vDc4: "",
+  vDc5: "",
+  vDc6: "",
+  vDc7: "",
+  vDc8: "",
+  vDc9: "",
+  vDc10: "",
+  vDc15: "",
+  vDc20: "",
+  vDc30: "",
+  vDc50: "",
+  vDc100: "",
 };
 
 function addNewArray() {
@@ -56,35 +72,51 @@ function loadStoredValues(Id) {
     }
   } else if (Id > val) {
     (document.getElementById("maker").value = ""),
-    (document.getElementById("testCode").value = ""),
-    (document.getElementById("cathode").value = ""),
-    (document.getElementById("anode").value = ""),
-    (document.getElementById("anodeSol").value = ""),
-    (document.getElementById("anodeThick").value = ""),
-    (document.getElementById("anodeFoil").value = "Cu"),
-    (document.getElementById("necLayer").value = ""),
-    (document.getElementById("necWatt").value = ""),
-    (document.getElementById("necMinute").value = ""),
-    (document.getElementById("protectLayer").value = ""),
-    (document.getElementById("protectWatt").value = ""),
-    (document.getElementById("necLayerCode").value = ""),
-    (document.getElementById("maker").value = ""),
-    (document.getElementById("mass").value = ""),
-    (document.getElementById("c1").value = ""),
-    (document.getElementById("c2").value = ""),
-    (document.getElementById("c3").value = ""),
-    (document.getElementById("c4").value = ""),
-    (document.getElementById("c5").value = ""),
-    (document.getElementById("c6").value = ""),
-    (document.getElementById("c7").value = ""),
-    (document.getElementById("c8").value = ""),
-    (document.getElementById("c9").value = ""),
-    (document.getElementById("c10").value = ""),
-    (document.getElementById("c15").value = ""),
-    (document.getElementById("c20").value = ""),
-    (document.getElementById("c30").value = ""),
-    (document.getElementById("c50").value = ""),
-    (document.getElementById("c100").value = "");
+      (document.getElementById("testCode").value = ""),
+      (document.getElementById("cathode").value = ""),
+      (document.getElementById("anode").value = ""),
+      (document.getElementById("anodeSol").value = ""),
+      (document.getElementById("anodeThick").value = ""),
+      (document.getElementById("notes").value = ""),
+      (document.getElementById("anodeFoil").value = "Cu"),
+      (document.getElementById("necLayer").value = ""),
+      (document.getElementById("necWatt").value = ""),
+      (document.getElementById("necMinute").value = ""),
+      (document.getElementById("protectLayer").value = ""),
+      (document.getElementById("protectWatt").value = ""),
+      (document.getElementById("necLayerCode").value = ""),
+      (document.getElementById("maker").value = ""),
+      (document.getElementById("mass").value = ""),
+      (document.getElementById("c1").value = ""),
+      (document.getElementById("c2").value = ""),
+      (document.getElementById("c3").value = ""),
+      (document.getElementById("c4").value = ""),
+      (document.getElementById("c5").value = ""),
+      (document.getElementById("c6").value = ""),
+      (document.getElementById("c7").value = ""),
+      (document.getElementById("c8").value = ""),
+      (document.getElementById("c9").value = ""),
+      (document.getElementById("c10").value = ""),
+      (document.getElementById("c15").value = ""),
+      (document.getElementById("c20").value = ""),
+      (document.getElementById("c30").value = ""),
+      (document.getElementById("c50").value = ""),
+      (document.getElementById("c100").value = ""),
+      (document.getElementById("vDc1").value = ""),
+      (document.getElementById("vDc2").value = ""),
+      (document.getElementById("vDc3").value = ""),
+      (document.getElementById("vDc4").value = ""),
+      (document.getElementById("vDc5").value = ""),
+      (document.getElementById("vDc6").value = ""),
+      (document.getElementById("vDc7").value = ""),
+      (document.getElementById("vDc8").value = ""),
+      (document.getElementById("vDc9").value = ""),
+      (document.getElementById("vDc10").value = ""),
+      (document.getElementById("vDc15").value = ""),
+      (document.getElementById("vDc20").value = ""),
+      (document.getElementById("vDc30").value = ""),
+      (document.getElementById("vDc50").value = ""),
+      (document.getElementById("vDc100").value = "");
   } else {
     throw "Error in loadStoredValues Function";
   }
@@ -101,6 +133,7 @@ function saveCurrentValues(Id) {
     anode: document.getElementById("anode").value,
     anodeSol: document.getElementById("anodeSol").value,
     anodeThick: document.getElementById("anodeThick").value,
+    notes: document.getElementById("notes").value,
     anodeFoil: document.getElementById("anodeFoil").value,
     necLayer: document.getElementById("necLayer").value,
     necWatt: document.getElementById("necWatt").value,
@@ -125,6 +158,21 @@ function saveCurrentValues(Id) {
     c30: document.getElementById("c30").value,
     c50: document.getElementById("c50").value,
     c100: document.getElementById("c100").value,
+    vDc1: document.getElementById("vDc1").value,
+    vDc2: document.getElementById("vDc2").value,
+    vDc3: document.getElementById("vDc3").value,
+    vDc4: document.getElementById("vDc4").value,
+    vDc5: document.getElementById("vDc5").value,
+    vDc6: document.getElementById("vDc6").value,
+    vDc7: document.getElementById("vDc7").value,
+    vDc8: document.getElementById("vDc8").value,
+    vDc9: document.getElementById("vDc9").value,
+    vDc10: document.getElementById("vDc10").value,
+    vDc15: document.getElementById("vDc15").value,
+    vDc20: document.getElementById("vDc20").value,
+    vDc30: document.getElementById("vDc30").value,
+    vDc50: document.getElementById("vDc50").value,
+    vDc100: document.getElementById("vDc100").value,
   };
 
   ipcRenderer.sendSync("modArray", currentArray, Id);
@@ -134,7 +182,7 @@ function bootWithRecent() {
   let totalBarVal = ipcRenderer.sendSync("storredArray", true);
   let currentBarVal = Number(document.querySelectorAll("#barList li").length);
   const element = document.getElementById("barList");
-  element.removeChild(element.lastElementChild)
+  element.removeChild(element.lastElementChild);
   while (currentBarVal < totalBarVal) {
     currentBarVal++;
     // Create New Element (Note: listEL = List element, elValue = Element Value, & linkEl = Link Element)
@@ -156,9 +204,9 @@ function bootWithRecent() {
     linkEl.appendChild(listEl);
     element.appendChild(linkEl);
   }
-  let blankDiv = document.createElement("div")
-  blankDiv.setAttribute("id", "blank")
-  element.appendChild(blankDiv)
+  let blankDiv = document.createElement("div");
+  blankDiv.setAttribute("id", "blank");
+  element.appendChild(blankDiv);
   loadStoredValues(0);
 }
 
@@ -183,8 +231,7 @@ function refreshActive(val) {
 function addLi() {
   // Remove Blank Div
   const barListEl = document.getElementById("barList");
-  barListEl.removeChild(barListEl.lastElementChild)
-
+  barListEl.removeChild(barListEl.lastElementChild);
 
   let totalBarVal = ipcRenderer.sendSync("storredArray", true); // Get Current Bar Value
   document.getElementsByClassName("active")[0].removeAttribute("class"); // Remove "active" Class from previous Element
@@ -222,9 +269,9 @@ function addLi() {
   loadStoredValues(totalBarVal);
 
   // Add Blank Div Back
-  let blankDiv = document.createElement("div")
-  blankDiv.setAttribute("id", "blank")
-  element.appendChild(blankDiv)
+  let blankDiv = document.createElement("div");
+  blankDiv.setAttribute("id", "blank");
+  element.appendChild(blankDiv);
 }
 
 function removeArray() {
@@ -249,15 +296,28 @@ function removeArray() {
   }
 }
 
-
-
 function uploadArray() {
+  var anodeInput = document.getElementById("anodeFoil").value;
+  var cathodeInput = document.getElementById("cathodeFoil").value;
+  if (anodeInput === "Al") {
+    anodeMass = '0.0106';
+  } else if (anodeInput === "Cu") {
+    anodeMass = '0.0175';
+  }
+  if (cathodeInput === "Al") {
+    cathodeMass = '0.0106';
+  } else if (cathodeInput === "Cu") {
+    cathodeMass = '0.0175';
+  }
+  const newRowNum = ipcRenderer.sendSync("getCurrentRowVal");
+
   const maker = document.getElementById("maker").value;
   const testCode = document.getElementById("testCode").value;
   const cathode = document.getElementById("cathode").value;
   const anode = document.getElementById("anode").value;
   const anodeSol = document.getElementById("anodeSol").value;
   const anodeThick = document.getElementById("anodeThick").value;
+  const notes = document.getElementById("notes").value;
   const anodeFoil = document.getElementById("anodeFoil").value;
   const necLayer = document.getElementById("necLayer").value;
   const necWatt = document.getElementById("necWatt").value;
@@ -267,6 +327,7 @@ function uploadArray() {
   const protectTime = document.getElementById("protectTime").value;
   const necLayerCode = document.getElementById("necLayerCode").value;
   const mass = document.getElementById("mass").value;
+  const activeMass = "=P" + newRowNum + "-" + anodeMass + "-" + cathodeMass;
   const c1 = document.getElementById("c1").value;
   const c2 = document.getElementById("c2").value;
   const c3 = document.getElementById("c3").value;
@@ -282,6 +343,21 @@ function uploadArray() {
   const c30 = document.getElementById("c30").value;
   const c50 = document.getElementById("c50").value;
   const c100 = document.getElementById("c100").value;
+  const vDc1 = document.getElementById("vDc1").value;
+  const vDc2 = document.getElementById("vDc2").value;
+  const vDc3 = document.getElementById("vDc3").value;
+  const vDc4 = document.getElementById("vDc4").value;
+  const vDc5 = document.getElementById("vDc5").value;
+  const vDc6 = document.getElementById("vDc6").value;
+  const vDc7 = document.getElementById("vDc7").value;
+  const vDc8 = document.getElementById("vDc8").value;
+  const vDc9 = document.getElementById("vDc9").value;
+  const vDc10 = document.getElementById("vDc10").value;
+  const vDc15 = document.getElementById("vDc15").value;
+  const vDc20 = document.getElementById("vDc20").value;
+  const vDc30 = document.getElementById("vDc30").value;
+  const vDc50 = document.getElementById("vDc50").value;
+  const vDc100 = document.getElementById("vDc100").value;
   const value = [
     maker,
     testCode,
@@ -297,7 +373,9 @@ function uploadArray() {
     protectWatt,
     protectTime,
     necLayerCode,
+    notes,
     mass,
+    activeMass,
     c1,
     c2,
     c3,
@@ -313,6 +391,21 @@ function uploadArray() {
     c30,
     c50,
     c100,
+    vDc1,
+    vDc2,
+    vDc3,
+    vDc4,
+    vDc5,
+    vDc6,
+    vDc7,
+    vDc8,
+    vDc9,
+    vDc10,
+    vDc15,
+    vDc20,
+    vDc30,
+    vDc50,
+    vDc100,
   ];
   const result = ipcRenderer.sendSync("uploadArray", value);
   if (result === "Array Uploaded Successfully") {

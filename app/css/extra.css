@@ -129,11 +129,18 @@ button.button {
 #cyclesDiv {
     margin: .75rem .75rem 2vw .75rem;
     height: fit-content;
-    min-width: fit-content;
 }
 
 .content table td, .content table th {
-    text-align: center;vertical-align: middle;border: none;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+}
+
+tbody th,
+tbody td,
+tbody input {
+  width: 5%;
 }
 
 #buttonDiv {

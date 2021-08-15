@@ -1,5 +1,54 @@
 const { ipcRenderer } = require("electron");
 
+const emptyArray = {
+  maker: "",
+  testCode: "",
+  cathode: "",
+  anode: "",
+  anodeSol: "",
+  anodeThick: "",
+  notes: "",
+  anodeFoil: "Cu",
+  necLayer: "",
+  necWatt: "",
+  necMinute: "",
+  protectLayer: "",
+  protectWatt: "",
+  protectTime: "",
+  necLayerCode: "",
+  mass: "",
+  c1: "",
+  c2: "",
+  c3: "",
+  c4: "",
+  c5: "",
+  c6: "",
+  c7: "",
+  c8: "",
+  c9: "",
+  c10: "",
+  c15: "",
+  c20: "",
+  c30: "",
+  c50: "",
+  c100: "",
+  vDc1: "",
+  vDc2: "",
+  vDc3: "",
+  vDc4: "",
+  vDc5: "",
+  vDc6: "",
+  vDc7: "",
+  vDc8: "",
+  vDc9: "",
+  vDc10: "",
+  vDc15: "",
+  vDc20: "",
+  vDc30: "",
+  vDc50: "",
+  vDc100: "",
+};
+
 function getStorredArrayVal() {
   let val = ipcRenderer.sendSync("storredArray", true);
   console.log(val);
@@ -9,70 +58,10 @@ function getArrayData(arg) {
   console.log(val[arg]);
 }
 function addNewArray() {
-  let emptyArray = {
-    testCode: "",
-    cathode: "",
-    anode: "",
-    anodeSol: "",
-    anodeThick: "",
-    anodeFoil: "",
-    necLayer: "",
-    necWatt: "",
-    necMinute: "",
-    protectLayer: "",
-    protectWatt: "",
-    protectTime: "",
-    mass: "",
-    c1: "",
-    c2: "",
-    c3: "",
-    c4: "",
-    c5: "",
-    c6: "",
-    c7: "",
-    c8: "",
-    c9: "",
-    c10: "",
-    c15: "",
-    c20: "",
-    c30: "",
-    c50: "",
-    c100: "",
-  };
   let val = ipcRenderer.sendSync("modArray", emptyArray);
   console.log(val);
 }
 function clearExistArray(arg) {
-  let emptyArray = {
-    testCode: "",
-    cathode: "",
-    anode: "",
-    anodeSol: "",
-    anodeThick: "",
-    anodeFoil: "",
-    necLayer: "",
-    necWatt: "",
-    necMinute: "",
-    protectLayer: "",
-    protectWatt: "",
-    protectTime: "",
-    mass: "",
-    c1: "",
-    c2: "",
-    c3: "",
-    c4: "",
-    c5: "",
-    c6: "",
-    c7: "",
-    c8: "",
-    c9: "",
-    c10: "",
-    c15: "",
-    c20: "",
-    c30: "",
-    c50: "",
-    c100: "",
-  };
   let val = ipcRenderer.sendSync("modArray", emptyArray, arg);
   console.log(val);
 }
@@ -85,7 +74,7 @@ function removeArray(arg) {
 
 function loadStoredValues(Id) {
   let val = ipcRenderer.sendSync("storredArray", true);
-  Id = Id + 1
+  Id = Id + 1;
 
   if (Id <= val) {
     let data = ipcRenderer.sendSync("storredArray", false);
@@ -95,36 +84,52 @@ function loadStoredValues(Id) {
       document.getElementById(id).value = value;
     }
   } else if (Id > val) {
-    document.getElementById("testCode").value = "",
-      document.getElementById("cathode").value = "",
-      document.getElementById("anode").value = "",
-      document.getElementById("anodeSol").value = "",
-      document.getElementById("anodeThick").value = "",
-      document.getElementById("anodeFoil").value = "Cu",
-      document.getElementById("necLayer").value = "",
-      document.getElementById("necWatt").value = "",
-      document.getElementById("necMinute").value = "",
-      document.getElementById("protectLayer").value = "",
-      document.getElementById("protectWatt").value = "",
-      document.getElementById("protectTime").value = "",
-      document.getElementById("mass").value = "",
-      document.getElementById("c1").value = "",
-      document.getElementById("c2").value = "",
-      document.getElementById("c3").value = "",
-      document.getElementById("c4").value = "",
-      document.getElementById("c5").value = "",
-      document.getElementById("c6").value = "",
-      document.getElementById("c7").value = "",
-      document.getElementById("c8").value = "",
-      document.getElementById("c9").value = "",
-      document.getElementById("c10").value = "",
-      document.getElementById("c15").value = "",
-      document.getElementById("c20").value = "",
-      document.getElementById("c30").value = "",
-      document.getElementById("c50").value = "",
-      document.getElementById("c100").value = "";
+    (document.getElementById("testCode").value = ""),
+      (document.getElementById("cathode").value = ""),
+      (document.getElementById("anode").value = ""),
+      (document.getElementById("anodeSol").value = ""),
+      (document.getElementById("anodeThick").value = ""),
+      (document.getElementById("notes").value = ""),
+      (document.getElementById("anodeFoil").value = "Cu"),
+      (document.getElementById("necLayer").value = ""),
+      (document.getElementById("necWatt").value = ""),
+      (document.getElementById("necMinute").value = ""),
+      (document.getElementById("protectLayer").value = ""),
+      (document.getElementById("protectWatt").value = ""),
+      (document.getElementById("protectTime").value = ""),
+      (document.getElementById("mass").value = ""),
+      (document.getElementById("c1").value = ""),
+      (document.getElementById("c2").value = ""),
+      (document.getElementById("c3").value = ""),
+      (document.getElementById("c4").value = ""),
+      (document.getElementById("c5").value = ""),
+      (document.getElementById("c6").value = ""),
+      (document.getElementById("c7").value = ""),
+      (document.getElementById("c8").value = ""),
+      (document.getElementById("c9").value = ""),
+      (document.getElementById("c10").value = ""),
+      (document.getElementById("c15").value = ""),
+      (document.getElementById("c20").value = ""),
+      (document.getElementById("c30").value = ""),
+      (document.getElementById("c50").value = ""),
+      (document.getElementById("c100").value = ""),
+      (document.getElementById("vDc1").value = ""),
+      (document.getElementById("vDc2").value = ""),
+      (document.getElementById("vDc3").value = ""),
+      (document.getElementById("vDc4").value = ""),
+      (document.getElementById("vDc5").value = ""),
+      (document.getElementById("vDc6").value = ""),
+      (document.getElementById("vDc7").value = ""),
+      (document.getElementById("vDc8").value = ""),
+      (document.getElementById("vDc9").value = ""),
+      (document.getElementById("vDc10").value = ""),
+      (document.getElementById("vDc15").value = ""),
+      (document.getElementById("vDc20").value = ""),
+      (document.getElementById("vDc30").value = ""),
+      (document.getElementById("vDc50").value = ""),
+      (document.getElementById("vDc100").value = "");
   } else {
-    throw "Error in loadStoredValues Function"
+    throw "Error in loadStoredValues Function";
   }
 
   electrodeMass();
@@ -138,6 +143,7 @@ function saveCurrentValues(Id) {
     anode: document.getElementById("anode").value,
     anodeSol: document.getElementById("anodeSol").value,
     anodeThick: document.getElementById("anodeThick").value,
+    notes: document.getElementById("notes").value,
     anodeFoil: document.getElementById("anodeFoil").value,
     necLayer: document.getElementById("necLayer").value,
     necWatt: document.getElementById("necWatt").value,
@@ -161,6 +167,21 @@ function saveCurrentValues(Id) {
     c30: document.getElementById("c30").value,
     c50: document.getElementById("c50").value,
     c100: document.getElementById("c100").value,
+    vDc1: document.getElementById("vDc1").value,
+    vDc2: document.getElementById("vDc2").value,
+    vDc3: document.getElementById("vDc3").value,
+    vDc4: document.getElementById("vDc4").value,
+    vDc5: document.getElementById("vDc5").value,
+    vDc6: document.getElementById("vDc6").value,
+    vDc7: document.getElementById("vDc7").value,
+    vDc8: document.getElementById("vDc8").value,
+    vDc9: document.getElementById("vDc9").value,
+    vDc10: document.getElementById("vDc10").value,
+    vDc15: document.getElementById("vDc15").value,
+    vDc20: document.getElementById("vDc20").value,
+    vDc30: document.getElementById("vDc30").value,
+    vDc50: document.getElementById("vDc50").value,
+    vDc100: document.getElementById("vDc100").value,
   };
 
   ipcRenderer.sendSync("modArray", currentArray, Id);
@@ -232,7 +253,7 @@ function addLi() {
 
   // Add Attributes to New Element
   let element = document.getElementById("barList");
-  let classAttr = document.createAttribute("class");       // Create & Add "class" attribute
+  let classAttr = document.createAttribute("class"); // Create & Add "class" attribute
   classAttr.value = "active";
   listEl.setAttributeNode(classAttr);
   let idAttr = document.createAttribute("id"); // Create & Add "id" attribute
@@ -245,5 +266,5 @@ function addLi() {
   let linkEl = document.createElement("a");
   linkEl.appendChild(listEl);
   element.appendChild(linkEl);
-  loadStoredValues(totalBarVal)
+  loadStoredValues(totalBarVal);
 }

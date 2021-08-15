@@ -6,6 +6,7 @@
     "anode": "",
     "anodeSol": "",
     "anodeThick": "",
+    "notes": "",
     "anodeFoil": "Cu",
     "necLayer": "",
     "necWatt": "",
@@ -29,6 +30,21 @@
     "c20": "",
     "c30": "",
     "c50": "",
-    "c100": ""
+    "c100": "",
+    "vDc1": "",
+    "vDc2": "",
+    "vDc3": "",
+    "vDc4": "",
+    "vDc5": "",
+    "vDc6": "",
+    "vDc7": "",
+    "vDc8": "",
+    "vDc9": "",
+    "vDc10": "",
+    "vDc15": "",
+    "vDc20": "",
+    "vDc30": "",
+    "vDc50": "",
+    "vDc100": ""
   }
 ]
